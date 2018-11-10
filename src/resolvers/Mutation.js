@@ -3,11 +3,35 @@ const { sign } = require('jsonwebtoken')
 const { APP_SECRET, getUserId } = require('../utils')
 
 const Mutation = {
+  createStallHolder: async (parent, { lng, lat, stall_name, description, market }, ctx) => {
+    const userId = getUserId(ctx)
+    return ctx.db.updateUser({
+      where: {
+        id: userId
+      },
+      data: {
+        role: "StallHolder",
+        stall: {
+          create: {
+            name: stall_name,
+            lng,
+            lat,
+            description,
+            markets: {
+              connect: {
+                name: market
+              }
+            }
+          }
+        }
+      }
+    })
+  },
   createMarket: async (parent, {name, province}, ctx) => {
     return ctx.db.createMarket({
       name, 
       province: {
-        create: {
+        connect: {
           name: province
         }
       }

@@ -205,6 +205,7 @@ input MarketWhereInput {
 
 input MarketWhereUniqueInput {
   id: ID
+  name: String
 }
 
 type Mutation {
@@ -579,6 +580,7 @@ input ProvinceWhereInput {
 
 input ProvinceWhereUniqueInput {
   id: ID
+  name: String
 }
 
 type Query {
@@ -887,6 +889,7 @@ type User {
   createdAt: DateTime!
   updatedAt: DateTime!
   stall: Stall
+  role: String
 }
 
 type UserConnection {
@@ -901,6 +904,7 @@ input UserCreateInput {
   password: String!
   posts: PostCreateManyWithoutAuthorInput
   stall: StallCreateOneWithoutOwnerInput
+  role: String
 }
 
 input UserCreateOneWithoutPostsInput {
@@ -918,6 +922,7 @@ input UserCreateWithoutPostsInput {
   email: String!
   password: String!
   stall: StallCreateOneWithoutOwnerInput
+  role: String
 }
 
 input UserCreateWithoutStallInput {
@@ -925,6 +930,7 @@ input UserCreateWithoutStallInput {
   email: String!
   password: String!
   posts: PostCreateManyWithoutAuthorInput
+  role: String
 }
 
 type UserEdge {
@@ -945,6 +951,8 @@ enum UserOrderByInput {
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  role_ASC
+  role_DESC
 }
 
 type UserPreviousValues {
@@ -954,6 +962,7 @@ type UserPreviousValues {
   password: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+  role: String
 }
 
 type UserSubscriptionPayload {
@@ -980,12 +989,14 @@ input UserUpdateInput {
   password: String
   posts: PostUpdateManyWithoutAuthorInput
   stall: StallUpdateOneWithoutOwnerInput
+  role: String
 }
 
 input UserUpdateManyMutationInput {
   name: String
   email: String
   password: String
+  role: String
 }
 
 input UserUpdateOneRequiredWithoutPostsInput {
@@ -1007,6 +1018,7 @@ input UserUpdateWithoutPostsDataInput {
   email: String
   password: String
   stall: StallUpdateOneWithoutOwnerInput
+  role: String
 }
 
 input UserUpdateWithoutStallDataInput {
@@ -1014,6 +1026,7 @@ input UserUpdateWithoutStallDataInput {
   email: String
   password: String
   posts: PostUpdateManyWithoutAuthorInput
+  role: String
 }
 
 input UserUpsertWithoutPostsInput {
@@ -1103,6 +1116,20 @@ input UserWhereInput {
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
   stall: StallWhereInput
+  role: String
+  role_not: String
+  role_in: [String!]
+  role_not_in: [String!]
+  role_lt: String
+  role_lte: String
+  role_gt: String
+  role_gte: String
+  role_contains: String
+  role_not_contains: String
+  role_starts_with: String
+  role_not_starts_with: String
+  role_ends_with: String
+  role_not_ends_with: String
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]

@@ -333,7 +333,9 @@ export type UserOrderByInput =
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
-  | "updatedAt_DESC";
+  | "updatedAt_DESC"
+  | "role_ASC"
+  | "role_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
@@ -342,10 +344,12 @@ export interface UserUpdateWithoutStallDataInput {
   email?: String;
   password?: String;
   posts?: PostUpdateManyWithoutAuthorInput;
+  role?: String;
 }
 
 export type MarketWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
+  name?: String;
 }>;
 
 export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
@@ -431,6 +435,20 @@ export interface UserWhereInput {
   updatedAt_gt?: DateTimeInput;
   updatedAt_gte?: DateTimeInput;
   stall?: StallWhereInput;
+  role?: String;
+  role_not?: String;
+  role_in?: String[] | String;
+  role_not_in?: String[] | String;
+  role_lt?: String;
+  role_lte?: String;
+  role_gt?: String;
+  role_gte?: String;
+  role_contains?: String;
+  role_not_contains?: String;
+  role_starts_with?: String;
+  role_not_starts_with?: String;
+  role_ends_with?: String;
+  role_not_ends_with?: String;
   AND?: UserWhereInput[] | UserWhereInput;
   OR?: UserWhereInput[] | UserWhereInput;
   NOT?: UserWhereInput[] | UserWhereInput;
@@ -472,6 +490,7 @@ export interface UserCreateWithoutStallInput {
   email: String;
   password: String;
   posts?: PostCreateManyWithoutAuthorInput;
+  role?: String;
 }
 
 export interface UserSubscriptionWhereInput {
@@ -577,6 +596,7 @@ export interface UserUpdateInput {
   password?: String;
   posts?: PostUpdateManyWithoutAuthorInput;
   stall?: StallUpdateOneWithoutOwnerInput;
+  role?: String;
 }
 
 export interface ProvinceUpdateWithoutMarketsDataInput {
@@ -616,6 +636,7 @@ export interface StallUpdateManyWithoutMarketsInput {
 
 export type ProvinceWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
+  name?: String;
 }>;
 
 export interface StallUpdateWithWhereUniqueWithoutMarketsInput {
@@ -858,6 +879,7 @@ export interface UserCreateInput {
   password: String;
   posts?: PostCreateManyWithoutAuthorInput;
   stall?: StallCreateOneWithoutOwnerInput;
+  role?: String;
 }
 
 export interface MarketUpdateWithoutStallsDataInput {
@@ -911,6 +933,7 @@ export interface UserCreateWithoutPostsInput {
   email: String;
   password: String;
   stall?: StallCreateOneWithoutOwnerInput;
+  role?: String;
 }
 
 export interface MarketCreateInput {
@@ -1032,6 +1055,7 @@ export interface UserUpdateManyMutationInput {
   name?: String;
   email?: String;
   password?: String;
+  role?: String;
 }
 
 export interface MarketCreateManyWithoutStallsInput {
@@ -1086,6 +1110,7 @@ export interface UserUpdateWithoutPostsDataInput {
   email?: String;
   password?: String;
   stall?: StallUpdateOneWithoutOwnerInput;
+  role?: String;
 }
 
 export interface UserUpdateOneRequiredWithoutPostsInput {
@@ -1134,6 +1159,7 @@ export interface UserPreviousValues {
   password: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
+  role?: String;
 }
 
 export interface UserPreviousValuesPromise
@@ -1145,6 +1171,7 @@ export interface UserPreviousValuesPromise
   password: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
+  role: () => Promise<String>;
 }
 
 export interface UserPreviousValuesSubscription
@@ -1156,6 +1183,7 @@ export interface UserPreviousValuesSubscription
   password: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  role: () => Promise<AsyncIterator<String>>;
 }
 
 export interface PostEdge {
@@ -1369,63 +1397,6 @@ export interface PageInfoSubscription
   endCursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface StallSubscriptionPayload {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface StallSubscriptionPayloadPromise
-  extends Promise<StallSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = Stall>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = StallPreviousValues>() => T;
-}
-
-export interface StallSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<StallSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = StallSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = StallPreviousValuesSubscription>() => T;
-}
-
-export interface MarketConnection {}
-
-export interface MarketConnectionPromise
-  extends Promise<MarketConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<MarketEdge>>() => T;
-  aggregate: <T = AggregateMarket>() => T;
-}
-
-export interface MarketConnectionSubscription
-  extends Promise<AsyncIterator<MarketConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<MarketEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateMarketSubscription>() => T;
-}
-
-export interface StallEdge {
-  cursor: String;
-}
-
-export interface StallEdgePromise extends Promise<StallEdge>, Fragmentable {
-  node: <T = Stall>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface StallEdgeSubscription
-  extends Promise<AsyncIterator<StallEdge>>,
-    Fragmentable {
-  node: <T = StallSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
 export interface Market {
   id: ID_Output;
   name: String;
@@ -1465,6 +1436,63 @@ export interface MarketSubscription
       last?: Int;
     }
   ) => T;
+}
+
+export interface MarketConnection {}
+
+export interface MarketConnectionPromise
+  extends Promise<MarketConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<MarketEdge>>() => T;
+  aggregate: <T = AggregateMarket>() => T;
+}
+
+export interface MarketConnectionSubscription
+  extends Promise<AsyncIterator<MarketConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<MarketEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateMarketSubscription>() => T;
+}
+
+export interface StallEdge {
+  cursor: String;
+}
+
+export interface StallEdgePromise extends Promise<StallEdge>, Fragmentable {
+  node: <T = Stall>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface StallEdgeSubscription
+  extends Promise<AsyncIterator<StallEdge>>,
+    Fragmentable {
+  node: <T = StallSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface StallSubscriptionPayload {
+  mutation: MutationType;
+  updatedFields?: String[];
+}
+
+export interface StallSubscriptionPayloadPromise
+  extends Promise<StallSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = Stall>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = StallPreviousValues>() => T;
+}
+
+export interface StallSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<StallSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = StallSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = StallPreviousValuesSubscription>() => T;
 }
 
 export interface AggregateProvince {
@@ -1712,6 +1740,7 @@ export interface User {
   password: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
+  role?: String;
 }
 
 export interface UserPromise extends Promise<User>, Fragmentable {
@@ -1733,6 +1762,7 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   stall: <T = Stall>() => T;
+  role: () => Promise<String>;
 }
 
 export interface UserSubscription
@@ -1756,6 +1786,7 @@ export interface UserSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   stall: <T = StallSubscription>() => T;
+  role: () => Promise<AsyncIterator<String>>;
 }
 
 export interface PostPreviousValues {

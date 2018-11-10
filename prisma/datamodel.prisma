@@ -17,6 +17,8 @@ type User {
   createdAt: DateTime!
   updatedAt: DateTime!
   stall: Stall
+    role: String
+
 }
 
 type Stall {
@@ -33,14 +35,14 @@ type Stall {
 
 type Market {
   id: ID! @unique
-  name: String!
+  name: String! @unique
   province: Province
   stalls: [Stall!]!
 }
 
 type Province {
   id: ID! @unique
-  name: String!
+  name: String! @unique
   markets: [Market!]!
 }
 
