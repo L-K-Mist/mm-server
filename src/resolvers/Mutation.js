@@ -27,6 +27,8 @@ const Mutation = {
       }
     })
   },
+
+
   createMarket: async (parent, {name, province}, ctx) => {
     return ctx.db.createMarket({
       name, 
@@ -37,6 +39,38 @@ const Mutation = {
       }
     }) 
   },
+
+  authorize: async (parent, { email, authId, name }, ctx) => {
+    const user = await ctx.db.user({ email })
+    const password = name + "abracadabra" + email
+
+    if (!user) {
+      const user = await ctx.db.createUser({
+        name,
+        email,
+        password,
+      })
+
+      return {
+        token: sign({ userId: user.id }, APP_SECRET),
+        user,
+      }
+    } else {
+      
+      const valid = await compare(password, user.password)
+  
+      if (!valid) {
+        throw new Error('Invalid password')
+      }
+  
+      return {
+        token: sign({ userId: user.id }, APP_SECRET),
+        user,
+      }
+    }
+
+  },
+
   signup: async (parent, { name, email, password }, ctx) => {
     const hashedPassword = await hash(password, 10)
     const user = await ctx.db.createUser({

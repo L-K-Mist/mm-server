@@ -13,6 +13,7 @@ type Mutation {
   publish(id: ID!): Post
   signup(name: String!, email: String!, password: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
+  authorize(email: String!, authId: String!, name: String!): AuthPayload!
   createStallHolder(
     lng: String!
     lat: String!

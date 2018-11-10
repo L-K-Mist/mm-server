@@ -5,6 +5,6 @@ var typeDefs = require("./prisma-schema").typeDefs;
 
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
-  endpoint: `https://eu1.prisma.sh/dylan-van-den-bosch-905763/prisma/dev`
+  endpoint: `https://eu1.prisma.sh/dylan-van-den-bosch-905763/market-mothership/dev`
 });
 exports.prisma = new exports.Prisma();
