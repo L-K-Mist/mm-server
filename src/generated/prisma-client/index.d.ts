@@ -276,6 +276,14 @@ export type MarketOrderByInput =
   | "id_DESC"
   | "name_ASC"
   | "name_DESC"
+  | "lat_ASC"
+  | "lat_DESC"
+  | "lng_ASC"
+  | "lng_DESC"
+  | "w3w_ASC"
+  | "w3w_DESC"
+  | "image_ASC"
+  | "image_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -356,595 +364,6 @@ export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
   where: PostWhereUniqueInput;
   update: PostUpdateWithoutAuthorDataInput;
   create: PostCreateWithoutAuthorInput;
-}
-
-export interface UserWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  email?: String;
-  email_not?: String;
-  email_in?: String[] | String;
-  email_not_in?: String[] | String;
-  email_lt?: String;
-  email_lte?: String;
-  email_gt?: String;
-  email_gte?: String;
-  email_contains?: String;
-  email_not_contains?: String;
-  email_starts_with?: String;
-  email_not_starts_with?: String;
-  email_ends_with?: String;
-  email_not_ends_with?: String;
-  password?: String;
-  password_not?: String;
-  password_in?: String[] | String;
-  password_not_in?: String[] | String;
-  password_lt?: String;
-  password_lte?: String;
-  password_gt?: String;
-  password_gte?: String;
-  password_contains?: String;
-  password_not_contains?: String;
-  password_starts_with?: String;
-  password_not_starts_with?: String;
-  password_ends_with?: String;
-  password_not_ends_with?: String;
-  posts_every?: PostWhereInput;
-  posts_some?: PostWhereInput;
-  posts_none?: PostWhereInput;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
-  stall?: StallWhereInput;
-  role?: String;
-  role_not?: String;
-  role_in?: String[] | String;
-  role_not_in?: String[] | String;
-  role_lt?: String;
-  role_lte?: String;
-  role_gt?: String;
-  role_gte?: String;
-  role_contains?: String;
-  role_not_contains?: String;
-  role_starts_with?: String;
-  role_not_starts_with?: String;
-  role_ends_with?: String;
-  role_not_ends_with?: String;
-  AND?: UserWhereInput[] | UserWhereInput;
-  OR?: UserWhereInput[] | UserWhereInput;
-  NOT?: UserWhereInput[] | UserWhereInput;
-}
-
-export interface StallCreateWithoutMarketsInput {
-  lng: String;
-  lat: String;
-  name?: String;
-  description?: String;
-  owner: UserCreateOneWithoutStallInput;
-}
-
-export interface MarketUpdateManyWithoutStallsInput {
-  create?: MarketCreateWithoutStallsInput[] | MarketCreateWithoutStallsInput;
-  delete?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
-  connect?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
-  disconnect?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
-  update?:
-    | MarketUpdateWithWhereUniqueWithoutStallsInput[]
-    | MarketUpdateWithWhereUniqueWithoutStallsInput;
-  upsert?:
-    | MarketUpsertWithWhereUniqueWithoutStallsInput[]
-    | MarketUpsertWithWhereUniqueWithoutStallsInput;
-}
-
-export interface UserCreateOneWithoutStallInput {
-  create?: UserCreateWithoutStallInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface UserUpsertWithoutStallInput {
-  update: UserUpdateWithoutStallDataInput;
-  create: UserCreateWithoutStallInput;
-}
-
-export interface UserCreateWithoutStallInput {
-  name: String;
-  email: String;
-  password: String;
-  posts?: PostCreateManyWithoutAuthorInput;
-  role?: String;
-}
-
-export interface UserSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: UserWhereInput;
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-}
-
-export interface PostCreateManyWithoutAuthorInput {
-  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-}
-
-export interface StallSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: StallWhereInput;
-  AND?: StallSubscriptionWhereInput[] | StallSubscriptionWhereInput;
-  OR?: StallSubscriptionWhereInput[] | StallSubscriptionWhereInput;
-  NOT?: StallSubscriptionWhereInput[] | StallSubscriptionWhereInput;
-}
-
-export interface PostCreateWithoutAuthorInput {
-  isPublished?: Boolean;
-  title: String;
-  content: String;
-}
-
-export interface MarketWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  province?: ProvinceWhereInput;
-  stalls_every?: StallWhereInput;
-  stalls_some?: StallWhereInput;
-  stalls_none?: StallWhereInput;
-  AND?: MarketWhereInput[] | MarketWhereInput;
-  OR?: MarketWhereInput[] | MarketWhereInput;
-  NOT?: MarketWhereInput[] | MarketWhereInput;
-}
-
-export interface MarketUpdateInput {
-  name?: String;
-  province?: ProvinceUpdateOneWithoutMarketsInput;
-  stalls?: StallUpdateManyWithoutMarketsInput;
-}
-
-export interface MarketSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: MarketWhereInput;
-  AND?: MarketSubscriptionWhereInput[] | MarketSubscriptionWhereInput;
-  OR?: MarketSubscriptionWhereInput[] | MarketSubscriptionWhereInput;
-  NOT?: MarketSubscriptionWhereInput[] | MarketSubscriptionWhereInput;
-}
-
-export interface ProvinceUpdateOneWithoutMarketsInput {
-  create?: ProvinceCreateWithoutMarketsInput;
-  update?: ProvinceUpdateWithoutMarketsDataInput;
-  upsert?: ProvinceUpsertWithoutMarketsInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
-  connect?: ProvinceWhereUniqueInput;
-}
-
-export interface UserUpdateInput {
-  name?: String;
-  email?: String;
-  password?: String;
-  posts?: PostUpdateManyWithoutAuthorInput;
-  stall?: StallUpdateOneWithoutOwnerInput;
-  role?: String;
-}
-
-export interface ProvinceUpdateWithoutMarketsDataInput {
-  name?: String;
-}
-
-export type PostWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface ProvinceUpsertWithoutMarketsInput {
-  update: ProvinceUpdateWithoutMarketsDataInput;
-  create: ProvinceCreateWithoutMarketsInput;
-}
-
-export interface StallUpdateInput {
-  lng?: String;
-  lat?: String;
-  name?: String;
-  description?: String;
-  owner?: UserUpdateOneRequiredWithoutStallInput;
-  markets?: MarketUpdateManyWithoutStallsInput;
-}
-
-export interface StallUpdateManyWithoutMarketsInput {
-  create?: StallCreateWithoutMarketsInput[] | StallCreateWithoutMarketsInput;
-  delete?: StallWhereUniqueInput[] | StallWhereUniqueInput;
-  connect?: StallWhereUniqueInput[] | StallWhereUniqueInput;
-  disconnect?: StallWhereUniqueInput[] | StallWhereUniqueInput;
-  update?:
-    | StallUpdateWithWhereUniqueWithoutMarketsInput[]
-    | StallUpdateWithWhereUniqueWithoutMarketsInput;
-  upsert?:
-    | StallUpsertWithWhereUniqueWithoutMarketsInput[]
-    | StallUpsertWithWhereUniqueWithoutMarketsInput;
-}
-
-export type ProvinceWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  name?: String;
-}>;
-
-export interface StallUpdateWithWhereUniqueWithoutMarketsInput {
-  where: StallWhereUniqueInput;
-  data: StallUpdateWithoutMarketsDataInput;
-}
-
-export interface MarketUpsertWithWhereUniqueWithoutProvinceInput {
-  where: MarketWhereUniqueInput;
-  update: MarketUpdateWithoutProvinceDataInput;
-  create: MarketCreateWithoutProvinceInput;
-}
-
-export interface StallUpdateWithoutMarketsDataInput {
-  lng?: String;
-  lat?: String;
-  name?: String;
-  description?: String;
-  owner?: UserUpdateOneRequiredWithoutStallInput;
-}
-
-export interface MarketUpdateWithWhereUniqueWithoutProvinceInput {
-  where: MarketWhereUniqueInput;
-  data: MarketUpdateWithoutProvinceDataInput;
-}
-
-export interface UserUpdateOneRequiredWithoutStallInput {
-  create?: UserCreateWithoutStallInput;
-  update?: UserUpdateWithoutStallDataInput;
-  upsert?: UserUpsertWithoutStallInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface MarketUpdateManyWithoutProvinceInput {
-  create?:
-    | MarketCreateWithoutProvinceInput[]
-    | MarketCreateWithoutProvinceInput;
-  delete?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
-  connect?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
-  disconnect?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
-  update?:
-    | MarketUpdateWithWhereUniqueWithoutProvinceInput[]
-    | MarketUpdateWithWhereUniqueWithoutProvinceInput;
-  upsert?:
-    | MarketUpsertWithWhereUniqueWithoutProvinceInput[]
-    | MarketUpsertWithWhereUniqueWithoutProvinceInput;
-}
-
-export interface StallUpsertWithoutOwnerInput {
-  update: StallUpdateWithoutOwnerDataInput;
-  create: StallCreateWithoutOwnerInput;
-}
-
-export interface MarketCreateWithoutProvinceInput {
-  name: String;
-  stalls?: StallCreateManyWithoutMarketsInput;
-}
-
-export interface PostUpdateManyWithoutAuthorInput {
-  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
-  delete?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  disconnect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  update?:
-    | PostUpdateWithWhereUniqueWithoutAuthorInput[]
-    | PostUpdateWithWhereUniqueWithoutAuthorInput;
-  upsert?:
-    | PostUpsertWithWhereUniqueWithoutAuthorInput[]
-    | PostUpsertWithWhereUniqueWithoutAuthorInput;
-}
-
-export interface MarketCreateManyWithoutProvinceInput {
-  create?:
-    | MarketCreateWithoutProvinceInput[]
-    | MarketCreateWithoutProvinceInput;
-  connect?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
-}
-
-export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
-  where: PostWhereUniqueInput;
-  data: PostUpdateWithoutAuthorDataInput;
-}
-
-export interface PostUpdateManyMutationInput {
-  isPublished?: Boolean;
-  title?: String;
-  content?: String;
-}
-
-export interface PostUpdateWithoutAuthorDataInput {
-  isPublished?: Boolean;
-  title?: String;
-  content?: String;
-}
-
-export interface ProvinceCreateOneWithoutMarketsInput {
-  create?: ProvinceCreateWithoutMarketsInput;
-  connect?: ProvinceWhereUniqueInput;
-}
-
-export interface PostWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
-  isPublished?: Boolean;
-  isPublished_not?: Boolean;
-  title?: String;
-  title_not?: String;
-  title_in?: String[] | String;
-  title_not_in?: String[] | String;
-  title_lt?: String;
-  title_lte?: String;
-  title_gt?: String;
-  title_gte?: String;
-  title_contains?: String;
-  title_not_contains?: String;
-  title_starts_with?: String;
-  title_not_starts_with?: String;
-  title_ends_with?: String;
-  title_not_ends_with?: String;
-  content?: String;
-  content_not?: String;
-  content_in?: String[] | String;
-  content_not_in?: String[] | String;
-  content_lt?: String;
-  content_lte?: String;
-  content_gt?: String;
-  content_gte?: String;
-  content_contains?: String;
-  content_not_contains?: String;
-  content_starts_with?: String;
-  content_not_starts_with?: String;
-  content_ends_with?: String;
-  content_not_ends_with?: String;
-  author?: UserWhereInput;
-  AND?: PostWhereInput[] | PostWhereInput;
-  OR?: PostWhereInput[] | PostWhereInput;
-  NOT?: PostWhereInput[] | PostWhereInput;
-}
-
-export interface StallCreateManyWithoutMarketsInput {
-  create?: StallCreateWithoutMarketsInput[] | StallCreateWithoutMarketsInput;
-  connect?: StallWhereUniqueInput[] | StallWhereUniqueInput;
-}
-
-export interface MarketUpsertWithWhereUniqueWithoutStallsInput {
-  where: MarketWhereUniqueInput;
-  update: MarketUpdateWithoutStallsDataInput;
-  create: MarketCreateWithoutStallsInput;
-}
-
-export interface ProvinceWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  markets_every?: MarketWhereInput;
-  markets_some?: MarketWhereInput;
-  markets_none?: MarketWhereInput;
-  AND?: ProvinceWhereInput[] | ProvinceWhereInput;
-  OR?: ProvinceWhereInput[] | ProvinceWhereInput;
-  NOT?: ProvinceWhereInput[] | ProvinceWhereInput;
-}
-
-export interface StallUpsertWithWhereUniqueWithoutMarketsInput {
-  where: StallWhereUniqueInput;
-  update: StallUpdateWithoutMarketsDataInput;
-  create: StallCreateWithoutMarketsInput;
-}
-
-export interface PostSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: PostWhereInput;
-  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-}
-
-export interface MarketUpdateManyMutationInput {
-  name?: String;
-}
-
-export interface UserCreateInput {
-  name: String;
-  email: String;
-  password: String;
-  posts?: PostCreateManyWithoutAuthorInput;
-  stall?: StallCreateOneWithoutOwnerInput;
-  role?: String;
-}
-
-export interface MarketUpdateWithoutStallsDataInput {
-  name?: String;
-  province?: ProvinceUpdateOneWithoutMarketsInput;
-}
-
-export interface StallCreateInput {
-  lng: String;
-  lat: String;
-  name?: String;
-  description?: String;
-  owner: UserCreateOneWithoutStallInput;
-  markets?: MarketCreateManyWithoutStallsInput;
-}
-
-export interface MarketUpdateWithWhereUniqueWithoutStallsInput {
-  where: MarketWhereUniqueInput;
-  data: MarketUpdateWithoutStallsDataInput;
-}
-
-export interface MarketUpdateWithoutProvinceDataInput {
-  name?: String;
-  stalls?: StallUpdateManyWithoutMarketsInput;
-}
-
-export interface PostCreateInput {
-  isPublished?: Boolean;
-  title: String;
-  content: String;
-  author: UserCreateOneWithoutPostsInput;
-}
-
-export interface ProvinceUpdateInput {
-  name?: String;
-  markets?: MarketUpdateManyWithoutProvinceInput;
-}
-
-export interface UserCreateOneWithoutPostsInput {
-  create?: UserCreateWithoutPostsInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface ProvinceCreateInput {
-  name: String;
-  markets?: MarketCreateManyWithoutProvinceInput;
-}
-
-export interface UserCreateWithoutPostsInput {
-  name: String;
-  email: String;
-  password: String;
-  stall?: StallCreateOneWithoutOwnerInput;
-  role?: String;
-}
-
-export interface MarketCreateInput {
-  name: String;
-  province?: ProvinceCreateOneWithoutMarketsInput;
-  stalls?: StallCreateManyWithoutMarketsInput;
-}
-
-export interface StallCreateOneWithoutOwnerInput {
-  create?: StallCreateWithoutOwnerInput;
-  connect?: StallWhereUniqueInput;
 }
 
 export interface StallWhereInput {
@@ -1043,12 +462,658 @@ export interface StallWhereInput {
   NOT?: StallWhereInput[] | StallWhereInput;
 }
 
-export interface StallCreateWithoutOwnerInput {
+export interface UserUpsertWithoutStallInput {
+  update: UserUpdateWithoutStallDataInput;
+  create: UserCreateWithoutStallInput;
+}
+
+export interface PostWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  isPublished?: Boolean;
+  isPublished_not?: Boolean;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
+  content?: String;
+  content_not?: String;
+  content_in?: String[] | String;
+  content_not_in?: String[] | String;
+  content_lt?: String;
+  content_lte?: String;
+  content_gt?: String;
+  content_gte?: String;
+  content_contains?: String;
+  content_not_contains?: String;
+  content_starts_with?: String;
+  content_not_starts_with?: String;
+  content_ends_with?: String;
+  content_not_ends_with?: String;
+  author?: UserWhereInput;
+  AND?: PostWhereInput[] | PostWhereInput;
+  OR?: PostWhereInput[] | PostWhereInput;
+  NOT?: PostWhereInput[] | PostWhereInput;
+}
+
+export interface StallCreateWithoutMarketsInput {
   lng: String;
   lat: String;
   name?: String;
   description?: String;
+  owner: UserCreateOneWithoutStallInput;
+}
+
+export interface StallUpdateWithoutOwnerDataInput {
+  lng?: String;
+  lat?: String;
+  name?: String;
+  description?: String;
+  markets?: MarketUpdateManyWithoutStallsInput;
+}
+
+export interface UserCreateOneWithoutStallInput {
+  create?: UserCreateWithoutStallInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface StallUpsertWithWhereUniqueWithoutMarketsInput {
+  where: StallWhereUniqueInput;
+  update: StallUpdateWithoutMarketsDataInput;
+  create: StallCreateWithoutMarketsInput;
+}
+
+export interface UserCreateWithoutStallInput {
+  name: String;
+  email: String;
+  password: String;
+  posts?: PostCreateManyWithoutAuthorInput;
+  role?: String;
+}
+
+export interface MarketWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  lat?: Float;
+  lat_not?: Float;
+  lat_in?: Float[] | Float;
+  lat_not_in?: Float[] | Float;
+  lat_lt?: Float;
+  lat_lte?: Float;
+  lat_gt?: Float;
+  lat_gte?: Float;
+  lng?: Float;
+  lng_not?: Float;
+  lng_in?: Float[] | Float;
+  lng_not_in?: Float[] | Float;
+  lng_lt?: Float;
+  lng_lte?: Float;
+  lng_gt?: Float;
+  lng_gte?: Float;
+  w3w?: String;
+  w3w_not?: String;
+  w3w_in?: String[] | String;
+  w3w_not_in?: String[] | String;
+  w3w_lt?: String;
+  w3w_lte?: String;
+  w3w_gt?: String;
+  w3w_gte?: String;
+  w3w_contains?: String;
+  w3w_not_contains?: String;
+  w3w_starts_with?: String;
+  w3w_not_starts_with?: String;
+  w3w_ends_with?: String;
+  w3w_not_ends_with?: String;
+  image?: String;
+  image_not?: String;
+  image_in?: String[] | String;
+  image_not_in?: String[] | String;
+  image_lt?: String;
+  image_lte?: String;
+  image_gt?: String;
+  image_gte?: String;
+  image_contains?: String;
+  image_not_contains?: String;
+  image_starts_with?: String;
+  image_not_starts_with?: String;
+  image_ends_with?: String;
+  image_not_ends_with?: String;
+  province?: ProvinceWhereInput;
+  stalls_every?: StallWhereInput;
+  stalls_some?: StallWhereInput;
+  stalls_none?: StallWhereInput;
+  AND?: MarketWhereInput[] | MarketWhereInput;
+  OR?: MarketWhereInput[] | MarketWhereInput;
+  NOT?: MarketWhereInput[] | MarketWhereInput;
+}
+
+export interface PostCreateManyWithoutAuthorInput {
+  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
+  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+}
+
+export interface ProvinceSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: ProvinceWhereInput;
+  AND?: ProvinceSubscriptionWhereInput[] | ProvinceSubscriptionWhereInput;
+  OR?: ProvinceSubscriptionWhereInput[] | ProvinceSubscriptionWhereInput;
+  NOT?: ProvinceSubscriptionWhereInput[] | ProvinceSubscriptionWhereInput;
+}
+
+export interface PostCreateWithoutAuthorInput {
+  isPublished?: Boolean;
+  title: String;
+  content: String;
+}
+
+export interface MarketSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: MarketWhereInput;
+  AND?: MarketSubscriptionWhereInput[] | MarketSubscriptionWhereInput;
+  OR?: MarketSubscriptionWhereInput[] | MarketSubscriptionWhereInput;
+  NOT?: MarketSubscriptionWhereInput[] | MarketSubscriptionWhereInput;
+}
+
+export interface MarketUpdateInput {
+  name?: String;
+  lat?: Float;
+  lng?: Float;
+  w3w?: String;
+  image?: String;
+  province?: ProvinceUpdateOneWithoutMarketsInput;
+  stalls?: StallUpdateManyWithoutMarketsInput;
+}
+
+export interface UserUpdateInput {
+  name?: String;
+  email?: String;
+  password?: String;
+  posts?: PostUpdateManyWithoutAuthorInput;
+  stall?: StallUpdateOneWithoutOwnerInput;
+  role?: String;
+}
+
+export interface ProvinceUpdateOneWithoutMarketsInput {
+  create?: ProvinceCreateWithoutMarketsInput;
+  update?: ProvinceUpdateWithoutMarketsDataInput;
+  upsert?: ProvinceUpsertWithoutMarketsInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: ProvinceWhereUniqueInput;
+}
+
+export interface StallUpdateManyMutationInput {
+  lng?: String;
+  lat?: String;
+  name?: String;
+  description?: String;
+}
+
+export interface ProvinceUpdateWithoutMarketsDataInput {
+  name?: String;
+}
+
+export interface StallUpdateInput {
+  lng?: String;
+  lat?: String;
+  name?: String;
+  description?: String;
+  owner?: UserUpdateOneRequiredWithoutStallInput;
+  markets?: MarketUpdateManyWithoutStallsInput;
+}
+
+export interface ProvinceUpsertWithoutMarketsInput {
+  update: ProvinceUpdateWithoutMarketsDataInput;
+  create: ProvinceCreateWithoutMarketsInput;
+}
+
+export interface ProvinceUpdateManyMutationInput {
+  name?: String;
+}
+
+export interface StallUpdateManyWithoutMarketsInput {
+  create?: StallCreateWithoutMarketsInput[] | StallCreateWithoutMarketsInput;
+  delete?: StallWhereUniqueInput[] | StallWhereUniqueInput;
+  connect?: StallWhereUniqueInput[] | StallWhereUniqueInput;
+  disconnect?: StallWhereUniqueInput[] | StallWhereUniqueInput;
+  update?:
+    | StallUpdateWithWhereUniqueWithoutMarketsInput[]
+    | StallUpdateWithWhereUniqueWithoutMarketsInput;
+  upsert?:
+    | StallUpsertWithWhereUniqueWithoutMarketsInput[]
+    | StallUpsertWithWhereUniqueWithoutMarketsInput;
+}
+
+export interface MarketUpsertWithWhereUniqueWithoutProvinceInput {
+  where: MarketWhereUniqueInput;
+  update: MarketUpdateWithoutProvinceDataInput;
+  create: MarketCreateWithoutProvinceInput;
+}
+
+export interface StallUpdateWithWhereUniqueWithoutMarketsInput {
+  where: StallWhereUniqueInput;
+  data: StallUpdateWithoutMarketsDataInput;
+}
+
+export interface MarketUpdateWithWhereUniqueWithoutProvinceInput {
+  where: MarketWhereUniqueInput;
+  data: MarketUpdateWithoutProvinceDataInput;
+}
+
+export interface StallUpdateWithoutMarketsDataInput {
+  lng?: String;
+  lat?: String;
+  name?: String;
+  description?: String;
+  owner?: UserUpdateOneRequiredWithoutStallInput;
+}
+
+export type StallWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  name?: String;
+}>;
+
+export interface UserUpdateOneRequiredWithoutStallInput {
+  create?: UserCreateWithoutStallInput;
+  update?: UserUpdateWithoutStallDataInput;
+  upsert?: UserUpsertWithoutStallInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface MarketCreateWithoutProvinceInput {
+  name: String;
+  lat?: Float;
+  lng?: Float;
+  w3w?: String;
+  image?: String;
+  stalls?: StallCreateManyWithoutMarketsInput;
+}
+
+export interface MarketUpsertWithWhereUniqueWithoutStallsInput {
+  where: MarketWhereUniqueInput;
+  update: MarketUpdateWithoutStallsDataInput;
+  create: MarketCreateWithoutStallsInput;
+}
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  email?: String;
+}>;
+
+export interface PostUpdateManyWithoutAuthorInput {
+  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
+  delete?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  disconnect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  update?:
+    | PostUpdateWithWhereUniqueWithoutAuthorInput[]
+    | PostUpdateWithWhereUniqueWithoutAuthorInput;
+  upsert?:
+    | PostUpsertWithWhereUniqueWithoutAuthorInput[]
+    | PostUpsertWithWhereUniqueWithoutAuthorInput;
+}
+
+export interface PostUpdateManyMutationInput {
+  isPublished?: Boolean;
+  title?: String;
+  content?: String;
+}
+
+export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
+  where: PostWhereUniqueInput;
+  data: PostUpdateWithoutAuthorDataInput;
+}
+
+export interface StallUpsertWithoutOwnerInput {
+  update: StallUpdateWithoutOwnerDataInput;
+  create: StallCreateWithoutOwnerInput;
+}
+
+export interface PostUpdateWithoutAuthorDataInput {
+  isPublished?: Boolean;
+  title?: String;
+  content?: String;
+}
+
+export interface MarketCreateInput {
+  name: String;
+  lat?: Float;
+  lng?: Float;
+  w3w?: String;
+  image?: String;
+  province?: ProvinceCreateOneWithoutMarketsInput;
+  stalls?: StallCreateManyWithoutMarketsInput;
+}
+
+export interface UserWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  email?: String;
+  email_not?: String;
+  email_in?: String[] | String;
+  email_not_in?: String[] | String;
+  email_lt?: String;
+  email_lte?: String;
+  email_gt?: String;
+  email_gte?: String;
+  email_contains?: String;
+  email_not_contains?: String;
+  email_starts_with?: String;
+  email_not_starts_with?: String;
+  email_ends_with?: String;
+  email_not_ends_with?: String;
+  password?: String;
+  password_not?: String;
+  password_in?: String[] | String;
+  password_not_in?: String[] | String;
+  password_lt?: String;
+  password_lte?: String;
+  password_gt?: String;
+  password_gte?: String;
+  password_contains?: String;
+  password_not_contains?: String;
+  password_starts_with?: String;
+  password_not_starts_with?: String;
+  password_ends_with?: String;
+  password_not_ends_with?: String;
+  posts_every?: PostWhereInput;
+  posts_some?: PostWhereInput;
+  posts_none?: PostWhereInput;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  stall?: StallWhereInput;
+  role?: String;
+  role_not?: String;
+  role_in?: String[] | String;
+  role_not_in?: String[] | String;
+  role_lt?: String;
+  role_lte?: String;
+  role_gt?: String;
+  role_gte?: String;
+  role_contains?: String;
+  role_not_contains?: String;
+  role_starts_with?: String;
+  role_not_starts_with?: String;
+  role_ends_with?: String;
+  role_not_ends_with?: String;
+  AND?: UserWhereInput[] | UserWhereInput;
+  OR?: UserWhereInput[] | UserWhereInput;
+  NOT?: UserWhereInput[] | UserWhereInput;
+}
+
+export interface ProvinceCreateWithoutMarketsInput {
+  name: String;
+}
+
+export interface MarketUpdateWithoutStallsDataInput {
+  name?: String;
+  lat?: Float;
+  lng?: Float;
+  w3w?: String;
+  image?: String;
+  province?: ProvinceUpdateOneWithoutMarketsInput;
+}
+
+export interface UserSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: UserWhereInput;
+  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+}
+
+export interface ProvinceWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  markets_every?: MarketWhereInput;
+  markets_some?: MarketWhereInput;
+  markets_none?: MarketWhereInput;
+  AND?: ProvinceWhereInput[] | ProvinceWhereInput;
+  OR?: ProvinceWhereInput[] | ProvinceWhereInput;
+  NOT?: ProvinceWhereInput[] | ProvinceWhereInput;
+}
+
+export interface PostSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: PostWhereInput;
+  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+}
+
+export interface MarketUpdateManyMutationInput {
+  name?: String;
+  lat?: Float;
+  lng?: Float;
+  w3w?: String;
+  image?: String;
+}
+
+export interface UserCreateInput {
+  name: String;
+  email: String;
+  password: String;
+  posts?: PostCreateManyWithoutAuthorInput;
+  stall?: StallCreateOneWithoutOwnerInput;
+  role?: String;
+}
+
+export interface MarketUpdateWithWhereUniqueWithoutStallsInput {
+  where: MarketWhereUniqueInput;
+  data: MarketUpdateWithoutStallsDataInput;
+}
+
+export interface StallCreateInput {
+  lng: String;
+  lat: String;
+  name?: String;
+  description?: String;
+  owner: UserCreateOneWithoutStallInput;
   markets?: MarketCreateManyWithoutStallsInput;
+}
+
+export interface MarketUpdateManyWithoutStallsInput {
+  create?: MarketCreateWithoutStallsInput[] | MarketCreateWithoutStallsInput;
+  delete?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
+  connect?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
+  disconnect?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
+  update?:
+    | MarketUpdateWithWhereUniqueWithoutStallsInput[]
+    | MarketUpdateWithWhereUniqueWithoutStallsInput;
+  upsert?:
+    | MarketUpsertWithWhereUniqueWithoutStallsInput[]
+    | MarketUpsertWithWhereUniqueWithoutStallsInput;
+}
+
+export interface MarketUpdateWithoutProvinceDataInput {
+  name?: String;
+  lat?: Float;
+  lng?: Float;
+  w3w?: String;
+  image?: String;
+  stalls?: StallUpdateManyWithoutMarketsInput;
+}
+
+export interface PostCreateInput {
+  isPublished?: Boolean;
+  title: String;
+  content: String;
+  author: UserCreateOneWithoutPostsInput;
+}
+
+export interface ProvinceUpdateInput {
+  name?: String;
+  markets?: MarketUpdateManyWithoutProvinceInput;
+}
+
+export interface UserCreateOneWithoutPostsInput {
+  create?: UserCreateWithoutPostsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface ProvinceCreateInput {
+  name: String;
+  markets?: MarketCreateManyWithoutProvinceInput;
+}
+
+export interface UserCreateWithoutPostsInput {
+  name: String;
+  email: String;
+  password: String;
+  stall?: StallCreateOneWithoutOwnerInput;
+  role?: String;
+}
+
+export interface StallCreateManyWithoutMarketsInput {
+  create?: StallCreateWithoutMarketsInput[] | StallCreateWithoutMarketsInput;
+  connect?: StallWhereUniqueInput[] | StallWhereUniqueInput;
+}
+
+export interface StallCreateOneWithoutOwnerInput {
+  create?: StallCreateWithoutOwnerInput;
+  connect?: StallWhereUniqueInput;
 }
 
 export interface UserUpdateManyMutationInput {
@@ -1058,42 +1123,43 @@ export interface UserUpdateManyMutationInput {
   role?: String;
 }
 
+export interface StallCreateWithoutOwnerInput {
+  lng: String;
+  lat: String;
+  name?: String;
+  description?: String;
+  markets?: MarketCreateManyWithoutStallsInput;
+}
+
+export type ProvinceWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  name?: String;
+}>;
+
 export interface MarketCreateManyWithoutStallsInput {
   create?: MarketCreateWithoutStallsInput[] | MarketCreateWithoutStallsInput;
   connect?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
 }
 
-export interface ProvinceUpdateManyMutationInput {
-  name?: String;
+export interface MarketCreateManyWithoutProvinceInput {
+  create?:
+    | MarketCreateWithoutProvinceInput[]
+    | MarketCreateWithoutProvinceInput;
+  connect?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
 }
 
 export interface MarketCreateWithoutStallsInput {
   name: String;
+  lat?: Float;
+  lng?: Float;
+  w3w?: String;
+  image?: String;
   province?: ProvinceCreateOneWithoutMarketsInput;
 }
 
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  email?: String;
-}>;
-
-export interface PostUpdateInput {
-  isPublished?: Boolean;
-  title?: String;
-  content?: String;
-  author?: UserUpdateOneRequiredWithoutPostsInput;
-}
-
-export interface ProvinceCreateWithoutMarketsInput {
-  name: String;
-}
-
-export interface StallUpdateWithoutOwnerDataInput {
-  lng?: String;
-  lat?: String;
-  name?: String;
-  description?: String;
-  markets?: MarketUpdateManyWithoutStallsInput;
+export interface ProvinceCreateOneWithoutMarketsInput {
+  create?: ProvinceCreateWithoutMarketsInput;
+  connect?: ProvinceWhereUniqueInput;
 }
 
 export interface StallUpdateOneWithoutOwnerInput {
@@ -1120,15 +1186,22 @@ export interface UserUpdateOneRequiredWithoutPostsInput {
   connect?: UserWhereUniqueInput;
 }
 
-export interface ProvinceSubscriptionWhereInput {
+export interface PostUpdateInput {
+  isPublished?: Boolean;
+  title?: String;
+  content?: String;
+  author?: UserUpdateOneRequiredWithoutPostsInput;
+}
+
+export interface StallSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
   updatedFields_contains_every?: String[] | String;
   updatedFields_contains_some?: String[] | String;
-  node?: ProvinceWhereInput;
-  AND?: ProvinceSubscriptionWhereInput[] | ProvinceSubscriptionWhereInput;
-  OR?: ProvinceSubscriptionWhereInput[] | ProvinceSubscriptionWhereInput;
-  NOT?: ProvinceSubscriptionWhereInput[] | ProvinceSubscriptionWhereInput;
+  node?: StallWhereInput;
+  AND?: StallSubscriptionWhereInput[] | StallSubscriptionWhereInput;
+  OR?: StallSubscriptionWhereInput[] | StallSubscriptionWhereInput;
+  NOT?: StallSubscriptionWhereInput[] | StallSubscriptionWhereInput;
 }
 
 export interface UserUpsertWithoutPostsInput {
@@ -1136,17 +1209,24 @@ export interface UserUpsertWithoutPostsInput {
   create: UserCreateWithoutPostsInput;
 }
 
-export type StallWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  name?: String;
-}>;
-
-export interface StallUpdateManyMutationInput {
-  lng?: String;
-  lat?: String;
-  name?: String;
-  description?: String;
+export interface MarketUpdateManyWithoutProvinceInput {
+  create?:
+    | MarketCreateWithoutProvinceInput[]
+    | MarketCreateWithoutProvinceInput;
+  delete?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
+  connect?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
+  disconnect?: MarketWhereUniqueInput[] | MarketWhereUniqueInput;
+  update?:
+    | MarketUpdateWithWhereUniqueWithoutProvinceInput[]
+    | MarketUpdateWithWhereUniqueWithoutProvinceInput;
+  upsert?:
+    | MarketUpsertWithWhereUniqueWithoutProvinceInput[]
+    | MarketUpsertWithWhereUniqueWithoutProvinceInput;
 }
+
+export type PostWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
 
 export interface NodeNode {
   id: ID_Output;
@@ -1200,6 +1280,298 @@ export interface PostEdgeSubscription
     Fragmentable {
   node: <T = PostSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ProvincePreviousValues {
+  id: ID_Output;
+  name: String;
+}
+
+export interface ProvincePreviousValuesPromise
+  extends Promise<ProvincePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+}
+
+export interface ProvincePreviousValuesSubscription
+  extends Promise<AsyncIterator<ProvincePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PostConnection {}
+
+export interface PostConnectionPromise
+  extends Promise<PostConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<PostEdge>>() => T;
+  aggregate: <T = AggregatePost>() => T;
+}
+
+export interface PostConnectionSubscription
+  extends Promise<AsyncIterator<PostConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PostEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePostSubscription>() => T;
+}
+
+export interface MarketEdge {
+  cursor: String;
+}
+
+export interface MarketEdgePromise extends Promise<MarketEdge>, Fragmentable {
+  node: <T = Market>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface MarketEdgeSubscription
+  extends Promise<AsyncIterator<MarketEdge>>,
+    Fragmentable {
+  node: <T = MarketSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateMarket {
+  count: Int;
+}
+
+export interface AggregateMarketPromise
+  extends Promise<AggregateMarket>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateMarketSubscription
+  extends Promise<AsyncIterator<AggregateMarket>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface StallPreviousValues {
+  id: ID_Output;
+  lng: String;
+  lat: String;
+  name?: String;
+  description?: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface StallPreviousValuesPromise
+  extends Promise<StallPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  lng: () => Promise<String>;
+  lat: () => Promise<String>;
+  name: () => Promise<String>;
+  description: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface StallPreviousValuesSubscription
+  extends Promise<AsyncIterator<StallPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  lng: () => Promise<AsyncIterator<String>>;
+  lat: () => Promise<AsyncIterator<String>>;
+  name: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface UserEdge {
+  cursor: String;
+}
+
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = User>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Market {
+  id: ID_Output;
+  name: String;
+  lat?: Float;
+  lng?: Float;
+  w3w?: String;
+  image?: String;
+}
+
+export interface MarketPromise extends Promise<Market>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  lat: () => Promise<Float>;
+  lng: () => Promise<Float>;
+  w3w: () => Promise<String>;
+  image: () => Promise<String>;
+  province: <T = Province>() => T;
+  stalls: <T = FragmentableArray<Stall>>(
+    args?: {
+      where?: StallWhereInput;
+      orderBy?: StallOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface MarketSubscription
+  extends Promise<AsyncIterator<Market>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  lat: () => Promise<AsyncIterator<Float>>;
+  lng: () => Promise<AsyncIterator<Float>>;
+  w3w: () => Promise<AsyncIterator<String>>;
+  image: () => Promise<AsyncIterator<String>>;
+  province: <T = ProvinceSubscription>() => T;
+  stalls: <T = Promise<AsyncIterator<StallSubscription>>>(
+    args?: {
+      where?: StallWhereInput;
+      orderBy?: StallOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface MarketConnection {}
+
+export interface MarketConnectionPromise
+  extends Promise<MarketConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<MarketEdge>>() => T;
+  aggregate: <T = AggregateMarket>() => T;
+}
+
+export interface MarketConnectionSubscription
+  extends Promise<AsyncIterator<MarketConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<MarketEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateMarketSubscription>() => T;
+}
+
+export interface StallEdge {
+  cursor: String;
+}
+
+export interface StallEdgePromise extends Promise<StallEdge>, Fragmentable {
+  node: <T = Stall>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface StallEdgeSubscription
+  extends Promise<AsyncIterator<StallEdge>>,
+    Fragmentable {
+  node: <T = StallSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Post {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  isPublished: Boolean;
+  title: String;
+  content: String;
+}
+
+export interface PostPromise extends Promise<Post>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  isPublished: () => Promise<Boolean>;
+  title: () => Promise<String>;
+  content: () => Promise<String>;
+  author: <T = User>() => T;
+}
+
+export interface PostSubscription
+  extends Promise<AsyncIterator<Post>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  isPublished: () => Promise<AsyncIterator<Boolean>>;
+  title: () => Promise<AsyncIterator<String>>;
+  content: () => Promise<AsyncIterator<String>>;
+  author: <T = UserSubscription>() => T;
+}
+
+export interface AggregateProvince {
+  count: Int;
+}
+
+export interface AggregateProvincePromise
+  extends Promise<AggregateProvince>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateProvinceSubscription
+  extends Promise<AsyncIterator<AggregateProvince>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface Stall {
@@ -1258,257 +1630,22 @@ export interface StallSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface PostConnection {}
+export interface ProvinceConnection {}
 
-export interface PostConnectionPromise
-  extends Promise<PostConnection>,
+export interface ProvinceConnectionPromise
+  extends Promise<ProvinceConnection>,
     Fragmentable {
   pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<PostEdge>>() => T;
-  aggregate: <T = AggregatePost>() => T;
+  edges: <T = FragmentableArray<ProvinceEdge>>() => T;
+  aggregate: <T = AggregateProvince>() => T;
 }
 
-export interface PostConnectionSubscription
-  extends Promise<AsyncIterator<PostConnection>>,
+export interface ProvinceConnectionSubscription
+  extends Promise<AsyncIterator<ProvinceConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PostEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePostSubscription>() => T;
-}
-
-export interface AggregateMarket {
-  count: Int;
-}
-
-export interface AggregateMarketPromise
-  extends Promise<AggregateMarket>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateMarketSubscription
-  extends Promise<AsyncIterator<AggregateMarket>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface StallPreviousValues {
-  id: ID_Output;
-  lng: String;
-  lat: String;
-  name?: String;
-  description?: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface StallPreviousValuesPromise
-  extends Promise<StallPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  lng: () => Promise<String>;
-  lat: () => Promise<String>;
-  name: () => Promise<String>;
-  description: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface StallPreviousValuesSubscription
-  extends Promise<AsyncIterator<StallPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  lng: () => Promise<AsyncIterator<String>>;
-  lat: () => Promise<AsyncIterator<String>>;
-  name: () => Promise<AsyncIterator<String>>;
-  description: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface MarketEdge {
-  cursor: String;
-}
-
-export interface MarketEdgePromise extends Promise<MarketEdge>, Fragmentable {
-  node: <T = Market>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface MarketEdgeSubscription
-  extends Promise<AsyncIterator<MarketEdge>>,
-    Fragmentable {
-  node: <T = MarketSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface UserEdge {
-  cursor: String;
-}
-
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = User>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface Market {
-  id: ID_Output;
-  name: String;
-}
-
-export interface MarketPromise extends Promise<Market>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  province: <T = Province>() => T;
-  stalls: <T = FragmentableArray<Stall>>(
-    args?: {
-      where?: StallWhereInput;
-      orderBy?: StallOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-}
-
-export interface MarketSubscription
-  extends Promise<AsyncIterator<Market>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  province: <T = ProvinceSubscription>() => T;
-  stalls: <T = Promise<AsyncIterator<StallSubscription>>>(
-    args?: {
-      where?: StallWhereInput;
-      orderBy?: StallOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-}
-
-export interface MarketConnection {}
-
-export interface MarketConnectionPromise
-  extends Promise<MarketConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<MarketEdge>>() => T;
-  aggregate: <T = AggregateMarket>() => T;
-}
-
-export interface MarketConnectionSubscription
-  extends Promise<AsyncIterator<MarketConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<MarketEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateMarketSubscription>() => T;
-}
-
-export interface StallEdge {
-  cursor: String;
-}
-
-export interface StallEdgePromise extends Promise<StallEdge>, Fragmentable {
-  node: <T = Stall>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface StallEdgeSubscription
-  extends Promise<AsyncIterator<StallEdge>>,
-    Fragmentable {
-  node: <T = StallSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface StallSubscriptionPayload {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface StallSubscriptionPayloadPromise
-  extends Promise<StallSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = Stall>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = StallPreviousValues>() => T;
-}
-
-export interface StallSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<StallSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = StallSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = StallPreviousValuesSubscription>() => T;
-}
-
-export interface AggregateProvince {
-  count: Int;
-}
-
-export interface AggregateProvincePromise
-  extends Promise<AggregateProvince>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateProvinceSubscription
-  extends Promise<AsyncIterator<AggregateProvince>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  edges: <T = Promise<AsyncIterator<ProvinceEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateProvinceSubscription>() => T;
 }
 
 export interface MarketSubscriptionPayload {
@@ -1534,43 +1671,6 @@ export interface MarketSubscriptionPayloadSubscription
   previousValues: <T = MarketPreviousValuesSubscription>() => T;
 }
 
-export interface ProvinceConnection {}
-
-export interface ProvinceConnectionPromise
-  extends Promise<ProvinceConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<ProvinceEdge>>() => T;
-  aggregate: <T = AggregateProvince>() => T;
-}
-
-export interface ProvinceConnectionSubscription
-  extends Promise<AsyncIterator<ProvinceConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ProvinceEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateProvinceSubscription>() => T;
-}
-
-export interface MarketPreviousValues {
-  id: ID_Output;
-  name: String;
-}
-
-export interface MarketPreviousValuesPromise
-  extends Promise<MarketPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-}
-
-export interface MarketPreviousValuesSubscription
-  extends Promise<AsyncIterator<MarketPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-}
-
 export interface AggregatePost {
   count: Int;
 }
@@ -1587,35 +1687,35 @@ export interface AggregatePostSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface Post {
+export interface MarketPreviousValues {
   id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  isPublished: Boolean;
-  title: String;
-  content: String;
+  name: String;
+  lat?: Float;
+  lng?: Float;
+  w3w?: String;
+  image?: String;
 }
 
-export interface PostPromise extends Promise<Post>, Fragmentable {
+export interface MarketPreviousValuesPromise
+  extends Promise<MarketPreviousValues>,
+    Fragmentable {
   id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  isPublished: () => Promise<Boolean>;
-  title: () => Promise<String>;
-  content: () => Promise<String>;
-  author: <T = User>() => T;
+  name: () => Promise<String>;
+  lat: () => Promise<Float>;
+  lng: () => Promise<Float>;
+  w3w: () => Promise<String>;
+  image: () => Promise<String>;
 }
 
-export interface PostSubscription
-  extends Promise<AsyncIterator<Post>>,
+export interface MarketPreviousValuesSubscription
+  extends Promise<AsyncIterator<MarketPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  isPublished: () => Promise<AsyncIterator<Boolean>>;
-  title: () => Promise<AsyncIterator<String>>;
-  content: () => Promise<AsyncIterator<String>>;
-  author: <T = UserSubscription>() => T;
+  name: () => Promise<AsyncIterator<String>>;
+  lat: () => Promise<AsyncIterator<Float>>;
+  lng: () => Promise<AsyncIterator<Float>>;
+  w3w: () => Promise<AsyncIterator<String>>;
+  image: () => Promise<AsyncIterator<String>>;
 }
 
 export interface AggregateUser {
@@ -1634,27 +1734,43 @@ export interface AggregateUserSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface PostSubscriptionPayload {
-  mutation: MutationType;
-  updatedFields?: String[];
+export interface Province {
+  id: ID_Output;
+  name: String;
 }
 
-export interface PostSubscriptionPayloadPromise
-  extends Promise<PostSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = Post>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PostPreviousValues>() => T;
+export interface ProvincePromise extends Promise<Province>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  markets: <T = FragmentableArray<Market>>(
+    args?: {
+      where?: MarketWhereInput;
+      orderBy?: MarketOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
 }
 
-export interface PostSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PostSubscriptionPayload>>,
+export interface ProvinceSubscription
+  extends Promise<AsyncIterator<Province>>,
     Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PostSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PostPreviousValuesSubscription>() => T;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  markets: <T = Promise<AsyncIterator<MarketSubscription>>>(
+    args?: {
+      where?: MarketWhereInput;
+      orderBy?: MarketOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
 }
 
 export interface AggregateStall {
@@ -1689,25 +1805,6 @@ export interface ProvinceEdgeSubscription
     Fragmentable {
   node: <T = ProvinceSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface ProvincePreviousValues {
-  id: ID_Output;
-  name: String;
-}
-
-export interface ProvincePreviousValuesPromise
-  extends Promise<ProvincePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-}
-
-export interface ProvincePreviousValuesSubscription
-  extends Promise<AsyncIterator<ProvincePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
 }
 
 export interface ProvinceSubscriptionPayload {
@@ -1820,43 +1917,50 @@ export interface PostPreviousValuesSubscription
   content: () => Promise<AsyncIterator<String>>;
 }
 
-export interface Province {
-  id: ID_Output;
-  name: String;
+export interface PostSubscriptionPayload {
+  mutation: MutationType;
+  updatedFields?: String[];
 }
 
-export interface ProvincePromise extends Promise<Province>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  markets: <T = FragmentableArray<Market>>(
-    args?: {
-      where?: MarketWhereInput;
-      orderBy?: MarketOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-}
-
-export interface ProvinceSubscription
-  extends Promise<AsyncIterator<Province>>,
+export interface PostSubscriptionPayloadPromise
+  extends Promise<PostSubscriptionPayload>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  markets: <T = Promise<AsyncIterator<MarketSubscription>>>(
-    args?: {
-      where?: MarketWhereInput;
-      orderBy?: MarketOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
+  mutation: () => Promise<MutationType>;
+  node: <T = Post>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PostPreviousValues>() => T;
+}
+
+export interface PostSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PostSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PostSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PostPreviousValuesSubscription>() => T;
+}
+
+export interface StallSubscriptionPayload {
+  mutation: MutationType;
+  updatedFields?: String[];
+}
+
+export interface StallSubscriptionPayloadPromise
+  extends Promise<StallSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = Stall>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = StallPreviousValues>() => T;
+}
+
+export interface StallSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<StallSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = StallSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = StallPreviousValuesSubscription>() => T;
 }
 
 export interface StallConnection {}
@@ -1919,6 +2023,13 @@ export interface UserSubscriptionPayloadSubscription
 }
 
 /*
+The `Boolean` scalar type represents `true` or `false`.
+*/
+export type Boolean = boolean;
+
+export type Long = string;
+
+/*
 DateTime scalar input type, allowing Date
 */
 export type DateTimeInput = Date | string;
@@ -1927,13 +2038,6 @@ export type DateTimeInput = Date | string;
 DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
-
-export type Long = string;
-
-/*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean;
 
 /*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
@@ -1945,6 +2049,11 @@ The `ID` scalar type represents a unique identifier, often used to refetch an ob
 */
 export type ID_Input = string | number;
 export type ID_Output = string;
+
+/*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). 
+*/
+export type Float = number;
 
 /*
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.

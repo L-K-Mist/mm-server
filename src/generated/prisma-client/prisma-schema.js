@@ -30,6 +30,10 @@ scalar Long
 type Market {
   id: ID!
   name: String!
+  lat: Float
+  lng: Float
+  w3w: String
+  image: String
   province: Province
   stalls(where: StallWhereInput, orderBy: StallOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Stall!]
 }
@@ -42,6 +46,10 @@ type MarketConnection {
 
 input MarketCreateInput {
   name: String!
+  lat: Float
+  lng: Float
+  w3w: String
+  image: String
   province: ProvinceCreateOneWithoutMarketsInput
   stalls: StallCreateManyWithoutMarketsInput
 }
@@ -58,11 +66,19 @@ input MarketCreateManyWithoutStallsInput {
 
 input MarketCreateWithoutProvinceInput {
   name: String!
+  lat: Float
+  lng: Float
+  w3w: String
+  image: String
   stalls: StallCreateManyWithoutMarketsInput
 }
 
 input MarketCreateWithoutStallsInput {
   name: String!
+  lat: Float
+  lng: Float
+  w3w: String
+  image: String
   province: ProvinceCreateOneWithoutMarketsInput
 }
 
@@ -76,6 +92,14 @@ enum MarketOrderByInput {
   id_DESC
   name_ASC
   name_DESC
+  lat_ASC
+  lat_DESC
+  lng_ASC
+  lng_DESC
+  w3w_ASC
+  w3w_DESC
+  image_ASC
+  image_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -85,6 +109,10 @@ enum MarketOrderByInput {
 type MarketPreviousValues {
   id: ID!
   name: String!
+  lat: Float
+  lng: Float
+  w3w: String
+  image: String
 }
 
 type MarketSubscriptionPayload {
@@ -107,12 +135,20 @@ input MarketSubscriptionWhereInput {
 
 input MarketUpdateInput {
   name: String
+  lat: Float
+  lng: Float
+  w3w: String
+  image: String
   province: ProvinceUpdateOneWithoutMarketsInput
   stalls: StallUpdateManyWithoutMarketsInput
 }
 
 input MarketUpdateManyMutationInput {
   name: String
+  lat: Float
+  lng: Float
+  w3w: String
+  image: String
 }
 
 input MarketUpdateManyWithoutProvinceInput {
@@ -135,11 +171,19 @@ input MarketUpdateManyWithoutStallsInput {
 
 input MarketUpdateWithoutProvinceDataInput {
   name: String
+  lat: Float
+  lng: Float
+  w3w: String
+  image: String
   stalls: StallUpdateManyWithoutMarketsInput
 }
 
 input MarketUpdateWithoutStallsDataInput {
   name: String
+  lat: Float
+  lng: Float
+  w3w: String
+  image: String
   province: ProvinceUpdateOneWithoutMarketsInput
 }
 
@@ -194,6 +238,50 @@ input MarketWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  lat: Float
+  lat_not: Float
+  lat_in: [Float!]
+  lat_not_in: [Float!]
+  lat_lt: Float
+  lat_lte: Float
+  lat_gt: Float
+  lat_gte: Float
+  lng: Float
+  lng_not: Float
+  lng_in: [Float!]
+  lng_not_in: [Float!]
+  lng_lt: Float
+  lng_lte: Float
+  lng_gt: Float
+  lng_gte: Float
+  w3w: String
+  w3w_not: String
+  w3w_in: [String!]
+  w3w_not_in: [String!]
+  w3w_lt: String
+  w3w_lte: String
+  w3w_gt: String
+  w3w_gte: String
+  w3w_contains: String
+  w3w_not_contains: String
+  w3w_starts_with: String
+  w3w_not_starts_with: String
+  w3w_ends_with: String
+  w3w_not_ends_with: String
+  image: String
+  image_not: String
+  image_in: [String!]
+  image_not_in: [String!]
+  image_lt: String
+  image_lte: String
+  image_gt: String
+  image_gte: String
+  image_contains: String
+  image_not_contains: String
+  image_starts_with: String
+  image_not_starts_with: String
+  image_ends_with: String
+  image_not_ends_with: String
   province: ProvinceWhereInput
   stalls_every: StallWhereInput
   stalls_some: StallWhereInput

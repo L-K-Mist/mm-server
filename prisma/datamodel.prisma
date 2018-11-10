@@ -36,6 +36,10 @@ type Stall {
 type Market {
   id: ID! @unique
   name: String! @unique
+  lat: Float
+  lng: Float
+  w3w: String
+  image: String
   province: Province
   stalls: [Stall!]!
 }
