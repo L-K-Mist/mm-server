@@ -7,21 +7,6 @@ type Query {
   post(id: ID!): Post
 }
 
-# addStallHolder(
-#                         image: String
-#                         publicEmail: String
-#                         publicName: String
-#                         cell: String
-#                         bio: String
-#                         stall_name: String!
-#                         stall_image: String
-#                         stall_lat: Float
-#                         stall_lng: Float
-#                         stall_w3w: String
-#                         stall_description: String
-#                         market_name: String
-#                 )
-
 type Mutation {
   createDraft(title: String!, content: String!, authorEmail: String!): Post!
   deletePost(id: ID!): Post

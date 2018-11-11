@@ -61,12 +61,12 @@ const Mutation = {
         user,
       }
     } else {
-      
-      const valid = await compare(password, user.password)
+      // TODO Find out what's wrong below
+      // const valid = await compare(password, user.password)
   
-      if (!valid) {
-        throw new Error('Invalid password')
-      }
+      // if (!valid) {
+      //   throw new Error('Invalid password')
+      // }
   
       return {
         token: sign({ userId: user.id }, APP_SECRET),
