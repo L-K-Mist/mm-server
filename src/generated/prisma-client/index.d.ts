@@ -584,8 +584,8 @@ export interface PostWhereInput {
 export interface StallCreateWithoutMarketsInput {
   image?: String;
   w3w?: String;
-  lng: String;
-  lat: String;
+  lng?: String;
+  lat?: String;
   name?: String;
   description?: String;
   owner: UserCreateOneWithoutStallInput;
@@ -1190,8 +1190,8 @@ export interface MarketUpdateWithWhereUniqueWithoutStallsInput {
 export interface StallCreateInput {
   image?: String;
   w3w?: String;
-  lng: String;
-  lat: String;
+  lng?: String;
+  lat?: String;
   name?: String;
   description?: String;
   owner: UserCreateOneWithoutStallInput;
@@ -1280,8 +1280,8 @@ export interface UserUpdateManyMutationInput {
 export interface StallCreateWithoutOwnerInput {
   image?: String;
   w3w?: String;
-  lng: String;
-  lat: String;
+  lng?: String;
+  lat?: String;
   name?: String;
   description?: String;
   markets?: MarketCreateManyWithoutStallsInput;
@@ -1531,8 +1531,8 @@ export interface StallPreviousValues {
   id: ID_Output;
   image?: String;
   w3w?: String;
-  lng: String;
-  lat: String;
+  lng?: String;
+  lat?: String;
   name?: String;
   description?: String;
   createdAt: DateTimeOutput;
@@ -1760,8 +1760,8 @@ export interface Stall {
   id: ID_Output;
   image?: String;
   w3w?: String;
-  lng: String;
-  lat: String;
+  lng?: String;
+  lat?: String;
   name?: String;
   description?: String;
   createdAt: DateTimeOutput;

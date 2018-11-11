@@ -8,6 +8,7 @@ const Query = {
   drafts: (parent, args, ctx) =>
     ctx.db.posts({ where: { isPublished: false } }),
   post: (parent, { id }, ctx) => ctx.db.post({ id }),
+  markets: (parent, args, ctx) => ctx.db.markets()
 }
 
 module.exports = {

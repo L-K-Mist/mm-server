@@ -29,8 +29,8 @@ type Stall {
   id: ID! @unique
   image: String
   w3w: String
-  lng: String!
-  lat: String!
+  lng: String
+  lat: String
   name: String @unique
   description: String
   owner: User!

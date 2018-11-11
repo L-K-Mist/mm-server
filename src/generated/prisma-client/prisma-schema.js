@@ -694,8 +694,8 @@ type Stall {
   id: ID!
   image: String
   w3w: String
-  lng: String!
-  lat: String!
+  lng: String
+  lat: String
   name: String
   description: String
   owner: User!
@@ -713,8 +713,8 @@ type StallConnection {
 input StallCreateInput {
   image: String
   w3w: String
-  lng: String!
-  lat: String!
+  lng: String
+  lat: String
   name: String
   description: String
   owner: UserCreateOneWithoutStallInput!
@@ -734,8 +734,8 @@ input StallCreateOneWithoutOwnerInput {
 input StallCreateWithoutMarketsInput {
   image: String
   w3w: String
-  lng: String!
-  lat: String!
+  lng: String
+  lat: String
   name: String
   description: String
   owner: UserCreateOneWithoutStallInput!
@@ -744,8 +744,8 @@ input StallCreateWithoutMarketsInput {
 input StallCreateWithoutOwnerInput {
   image: String
   w3w: String
-  lng: String!
-  lat: String!
+  lng: String
+  lat: String
   name: String
   description: String
   markets: MarketCreateManyWithoutStallsInput
@@ -781,8 +781,8 @@ type StallPreviousValues {
   id: ID!
   image: String
   w3w: String
-  lng: String!
-  lat: String!
+  lng: String
+  lat: String
   name: String
   description: String
   createdAt: DateTime!
