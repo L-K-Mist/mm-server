@@ -3,7 +3,7 @@ const { sign } = require('jsonwebtoken')
 const { APP_SECRET, getUserId } = require('../utils')
 
 const Mutation = {
-  createStallHolder: async (parent, { lng, lat, stall_name, description, market }, ctx) => {
+  createStallHolder: async (parent, {stall, profile}, ctx) => {
     const userId = getUserId(ctx)
     return ctx.db.updateUser({
       where: {
@@ -11,15 +11,20 @@ const Mutation = {
       },
       data: {
         role: "StallHolder",
+        cell: profile.cell,
+        image: profile.image,
+        publicEmail: profile.publicEmail,
+        publicName: profile.publicName,
+        bio: profile.bio,
         stall: {
           create: {
-            name: stall_name,
-            lng,
-            lat,
-            description,
+            name: stall.name,
+            lng: stall.lng,
+            lat: stall.lat,
+            description: stall.description,
             markets: {
               connect: {
-                name: market
+                name: stall.market
               }
             }
           }
@@ -43,12 +48,12 @@ const Mutation = {
   authorize: async (parent, { email, authId, name }, ctx) => {
     const user = await ctx.db.user({ email })
     const password = name + "abracadabra" + email
-
+    const hashedPassword = await hash(password, 10)
     if (!user) {
       const user = await ctx.db.createUser({
         name,
         email,
-        password,
+        password: hashedPassword
       })
 
       return {

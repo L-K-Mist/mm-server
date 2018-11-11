@@ -692,6 +692,8 @@ type Query {
 
 type Stall {
   id: ID!
+  image: String
+  w3w: String
   lng: String!
   lat: String!
   name: String
@@ -709,6 +711,8 @@ type StallConnection {
 }
 
 input StallCreateInput {
+  image: String
+  w3w: String
   lng: String!
   lat: String!
   name: String
@@ -728,6 +732,8 @@ input StallCreateOneWithoutOwnerInput {
 }
 
 input StallCreateWithoutMarketsInput {
+  image: String
+  w3w: String
   lng: String!
   lat: String!
   name: String
@@ -736,6 +742,8 @@ input StallCreateWithoutMarketsInput {
 }
 
 input StallCreateWithoutOwnerInput {
+  image: String
+  w3w: String
   lng: String!
   lat: String!
   name: String
@@ -751,6 +759,10 @@ type StallEdge {
 enum StallOrderByInput {
   id_ASC
   id_DESC
+  image_ASC
+  image_DESC
+  w3w_ASC
+  w3w_DESC
   lng_ASC
   lng_DESC
   lat_ASC
@@ -767,6 +779,8 @@ enum StallOrderByInput {
 
 type StallPreviousValues {
   id: ID!
+  image: String
+  w3w: String
   lng: String!
   lat: String!
   name: String
@@ -794,6 +808,8 @@ input StallSubscriptionWhereInput {
 }
 
 input StallUpdateInput {
+  image: String
+  w3w: String
   lng: String
   lat: String
   name: String
@@ -803,6 +819,8 @@ input StallUpdateInput {
 }
 
 input StallUpdateManyMutationInput {
+  image: String
+  w3w: String
   lng: String
   lat: String
   name: String
@@ -828,6 +846,8 @@ input StallUpdateOneWithoutOwnerInput {
 }
 
 input StallUpdateWithoutMarketsDataInput {
+  image: String
+  w3w: String
   lng: String
   lat: String
   name: String
@@ -836,6 +856,8 @@ input StallUpdateWithoutMarketsDataInput {
 }
 
 input StallUpdateWithoutOwnerDataInput {
+  image: String
+  w3w: String
   lng: String
   lat: String
   name: String
@@ -874,6 +896,34 @@ input StallWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  image: String
+  image_not: String
+  image_in: [String!]
+  image_not_in: [String!]
+  image_lt: String
+  image_lte: String
+  image_gt: String
+  image_gte: String
+  image_contains: String
+  image_not_contains: String
+  image_starts_with: String
+  image_not_starts_with: String
+  image_ends_with: String
+  image_not_ends_with: String
+  w3w: String
+  w3w_not: String
+  w3w_in: [String!]
+  w3w_not_in: [String!]
+  w3w_lt: String
+  w3w_lte: String
+  w3w_gt: String
+  w3w_gte: String
+  w3w_contains: String
+  w3w_not_contains: String
+  w3w_starts_with: String
+  w3w_not_starts_with: String
+  w3w_ends_with: String
+  w3w_not_ends_with: String
   lng: String
   lng_not: String
   lng_in: [String!]
@@ -970,14 +1020,19 @@ type Subscription {
 
 type User {
   id: ID!
+  password: String!
   name: String!
   email: String!
-  password: String!
+  cell: String
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
   createdAt: DateTime!
   updatedAt: DateTime!
   stall: Stall
   role: String
+  image: String
+  publicEmail: String
+  publicName: String
+  bio: String
 }
 
 type UserConnection {
@@ -987,12 +1042,17 @@ type UserConnection {
 }
 
 input UserCreateInput {
+  password: String!
   name: String!
   email: String!
-  password: String!
+  cell: String
   posts: PostCreateManyWithoutAuthorInput
   stall: StallCreateOneWithoutOwnerInput
   role: String
+  image: String
+  publicEmail: String
+  publicName: String
+  bio: String
 }
 
 input UserCreateOneWithoutPostsInput {
@@ -1006,19 +1066,29 @@ input UserCreateOneWithoutStallInput {
 }
 
 input UserCreateWithoutPostsInput {
+  password: String!
   name: String!
   email: String!
-  password: String!
+  cell: String
   stall: StallCreateOneWithoutOwnerInput
   role: String
+  image: String
+  publicEmail: String
+  publicName: String
+  bio: String
 }
 
 input UserCreateWithoutStallInput {
+  password: String!
   name: String!
   email: String!
-  password: String!
+  cell: String
   posts: PostCreateManyWithoutAuthorInput
   role: String
+  image: String
+  publicEmail: String
+  publicName: String
+  bio: String
 }
 
 type UserEdge {
@@ -1029,28 +1099,43 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
+  password_ASC
+  password_DESC
   name_ASC
   name_DESC
   email_ASC
   email_DESC
-  password_ASC
-  password_DESC
+  cell_ASC
+  cell_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
   role_ASC
   role_DESC
+  image_ASC
+  image_DESC
+  publicEmail_ASC
+  publicEmail_DESC
+  publicName_ASC
+  publicName_DESC
+  bio_ASC
+  bio_DESC
 }
 
 type UserPreviousValues {
   id: ID!
+  password: String!
   name: String!
   email: String!
-  password: String!
+  cell: String
   createdAt: DateTime!
   updatedAt: DateTime!
   role: String
+  image: String
+  publicEmail: String
+  publicName: String
+  bio: String
 }
 
 type UserSubscriptionPayload {
@@ -1072,19 +1157,29 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateInput {
+  password: String
   name: String
   email: String
-  password: String
+  cell: String
   posts: PostUpdateManyWithoutAuthorInput
   stall: StallUpdateOneWithoutOwnerInput
   role: String
+  image: String
+  publicEmail: String
+  publicName: String
+  bio: String
 }
 
 input UserUpdateManyMutationInput {
+  password: String
   name: String
   email: String
-  password: String
+  cell: String
   role: String
+  image: String
+  publicEmail: String
+  publicName: String
+  bio: String
 }
 
 input UserUpdateOneRequiredWithoutPostsInput {
@@ -1102,19 +1197,29 @@ input UserUpdateOneRequiredWithoutStallInput {
 }
 
 input UserUpdateWithoutPostsDataInput {
+  password: String
   name: String
   email: String
-  password: String
+  cell: String
   stall: StallUpdateOneWithoutOwnerInput
   role: String
+  image: String
+  publicEmail: String
+  publicName: String
+  bio: String
 }
 
 input UserUpdateWithoutStallDataInput {
+  password: String
   name: String
   email: String
-  password: String
+  cell: String
   posts: PostUpdateManyWithoutAuthorInput
   role: String
+  image: String
+  publicEmail: String
+  publicName: String
+  bio: String
 }
 
 input UserUpsertWithoutPostsInput {
@@ -1142,6 +1247,20 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
   name: String
   name_not: String
   name_in: [String!]
@@ -1170,20 +1289,20 @@ input UserWhereInput {
   email_not_starts_with: String
   email_ends_with: String
   email_not_ends_with: String
-  password: String
-  password_not: String
-  password_in: [String!]
-  password_not_in: [String!]
-  password_lt: String
-  password_lte: String
-  password_gt: String
-  password_gte: String
-  password_contains: String
-  password_not_contains: String
-  password_starts_with: String
-  password_not_starts_with: String
-  password_ends_with: String
-  password_not_ends_with: String
+  cell: String
+  cell_not: String
+  cell_in: [String!]
+  cell_not_in: [String!]
+  cell_lt: String
+  cell_lte: String
+  cell_gt: String
+  cell_gte: String
+  cell_contains: String
+  cell_not_contains: String
+  cell_starts_with: String
+  cell_not_starts_with: String
+  cell_ends_with: String
+  cell_not_ends_with: String
   posts_every: PostWhereInput
   posts_some: PostWhereInput
   posts_none: PostWhereInput
@@ -1218,6 +1337,62 @@ input UserWhereInput {
   role_not_starts_with: String
   role_ends_with: String
   role_not_ends_with: String
+  image: String
+  image_not: String
+  image_in: [String!]
+  image_not_in: [String!]
+  image_lt: String
+  image_lte: String
+  image_gt: String
+  image_gte: String
+  image_contains: String
+  image_not_contains: String
+  image_starts_with: String
+  image_not_starts_with: String
+  image_ends_with: String
+  image_not_ends_with: String
+  publicEmail: String
+  publicEmail_not: String
+  publicEmail_in: [String!]
+  publicEmail_not_in: [String!]
+  publicEmail_lt: String
+  publicEmail_lte: String
+  publicEmail_gt: String
+  publicEmail_gte: String
+  publicEmail_contains: String
+  publicEmail_not_contains: String
+  publicEmail_starts_with: String
+  publicEmail_not_starts_with: String
+  publicEmail_ends_with: String
+  publicEmail_not_ends_with: String
+  publicName: String
+  publicName_not: String
+  publicName_in: [String!]
+  publicName_not_in: [String!]
+  publicName_lt: String
+  publicName_lte: String
+  publicName_gt: String
+  publicName_gte: String
+  publicName_contains: String
+  publicName_not_contains: String
+  publicName_starts_with: String
+  publicName_not_starts_with: String
+  publicName_ends_with: String
+  publicName_not_ends_with: String
+  bio: String
+  bio_not: String
+  bio_in: [String!]
+  bio_not_in: [String!]
+  bio_lt: String
+  bio_lte: String
+  bio_gt: String
+  bio_gte: String
+  bio_contains: String
+  bio_not_contains: String
+  bio_starts_with: String
+  bio_not_starts_with: String
+  bio_ends_with: String
+  bio_not_ends_with: String
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]

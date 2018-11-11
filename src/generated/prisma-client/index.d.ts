@@ -292,6 +292,10 @@ export type MarketOrderByInput =
 export type StallOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "image_ASC"
+  | "image_DESC"
+  | "w3w_ASC"
+  | "w3w_DESC"
   | "lng_ASC"
   | "lng_DESC"
   | "lat_ASC"
@@ -332,27 +336,42 @@ export type ProvinceOrderByInput =
 export type UserOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "password_ASC"
+  | "password_DESC"
   | "name_ASC"
   | "name_DESC"
   | "email_ASC"
   | "email_DESC"
-  | "password_ASC"
-  | "password_DESC"
+  | "cell_ASC"
+  | "cell_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
   | "updatedAt_DESC"
   | "role_ASC"
-  | "role_DESC";
+  | "role_DESC"
+  | "image_ASC"
+  | "image_DESC"
+  | "publicEmail_ASC"
+  | "publicEmail_DESC"
+  | "publicName_ASC"
+  | "publicName_DESC"
+  | "bio_ASC"
+  | "bio_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export interface UserUpdateWithoutStallDataInput {
+  password?: String;
   name?: String;
   email?: String;
-  password?: String;
+  cell?: String;
   posts?: PostUpdateManyWithoutAuthorInput;
   role?: String;
+  image?: String;
+  publicEmail?: String;
+  publicName?: String;
+  bio?: String;
 }
 
 export type MarketWhereUniqueInput = AtLeastOne<{
@@ -381,6 +400,34 @@ export interface StallWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
+  image?: String;
+  image_not?: String;
+  image_in?: String[] | String;
+  image_not_in?: String[] | String;
+  image_lt?: String;
+  image_lte?: String;
+  image_gt?: String;
+  image_gte?: String;
+  image_contains?: String;
+  image_not_contains?: String;
+  image_starts_with?: String;
+  image_not_starts_with?: String;
+  image_ends_with?: String;
+  image_not_ends_with?: String;
+  w3w?: String;
+  w3w_not?: String;
+  w3w_in?: String[] | String;
+  w3w_not_in?: String[] | String;
+  w3w_lt?: String;
+  w3w_lte?: String;
+  w3w_gt?: String;
+  w3w_gte?: String;
+  w3w_contains?: String;
+  w3w_not_contains?: String;
+  w3w_starts_with?: String;
+  w3w_not_starts_with?: String;
+  w3w_ends_with?: String;
+  w3w_not_ends_with?: String;
   lng?: String;
   lng_not?: String;
   lng_in?: String[] | String;
@@ -535,6 +582,8 @@ export interface PostWhereInput {
 }
 
 export interface StallCreateWithoutMarketsInput {
+  image?: String;
+  w3w?: String;
   lng: String;
   lat: String;
   name?: String;
@@ -543,6 +592,8 @@ export interface StallCreateWithoutMarketsInput {
 }
 
 export interface StallUpdateWithoutOwnerDataInput {
+  image?: String;
+  w3w?: String;
   lng?: String;
   lat?: String;
   name?: String;
@@ -562,11 +613,16 @@ export interface StallUpsertWithWhereUniqueWithoutMarketsInput {
 }
 
 export interface UserCreateWithoutStallInput {
+  password: String;
   name: String;
   email: String;
-  password: String;
+  cell?: String;
   posts?: PostCreateManyWithoutAuthorInput;
   role?: String;
+  image?: String;
+  publicEmail?: String;
+  publicName?: String;
+  bio?: String;
 }
 
 export interface MarketWhereInput {
@@ -695,12 +751,17 @@ export interface MarketUpdateInput {
 }
 
 export interface UserUpdateInput {
+  password?: String;
   name?: String;
   email?: String;
-  password?: String;
+  cell?: String;
   posts?: PostUpdateManyWithoutAuthorInput;
   stall?: StallUpdateOneWithoutOwnerInput;
   role?: String;
+  image?: String;
+  publicEmail?: String;
+  publicName?: String;
+  bio?: String;
 }
 
 export interface ProvinceUpdateOneWithoutMarketsInput {
@@ -713,6 +774,8 @@ export interface ProvinceUpdateOneWithoutMarketsInput {
 }
 
 export interface StallUpdateManyMutationInput {
+  image?: String;
+  w3w?: String;
   lng?: String;
   lat?: String;
   name?: String;
@@ -724,6 +787,8 @@ export interface ProvinceUpdateWithoutMarketsDataInput {
 }
 
 export interface StallUpdateInput {
+  image?: String;
+  w3w?: String;
   lng?: String;
   lat?: String;
   name?: String;
@@ -771,6 +836,8 @@ export interface MarketUpdateWithWhereUniqueWithoutProvinceInput {
 }
 
 export interface StallUpdateWithoutMarketsDataInput {
+  image?: String;
+  w3w?: String;
   lng?: String;
   lat?: String;
   name?: String;
@@ -870,6 +937,20 @@ export interface UserWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
+  password?: String;
+  password_not?: String;
+  password_in?: String[] | String;
+  password_not_in?: String[] | String;
+  password_lt?: String;
+  password_lte?: String;
+  password_gt?: String;
+  password_gte?: String;
+  password_contains?: String;
+  password_not_contains?: String;
+  password_starts_with?: String;
+  password_not_starts_with?: String;
+  password_ends_with?: String;
+  password_not_ends_with?: String;
   name?: String;
   name_not?: String;
   name_in?: String[] | String;
@@ -898,20 +979,20 @@ export interface UserWhereInput {
   email_not_starts_with?: String;
   email_ends_with?: String;
   email_not_ends_with?: String;
-  password?: String;
-  password_not?: String;
-  password_in?: String[] | String;
-  password_not_in?: String[] | String;
-  password_lt?: String;
-  password_lte?: String;
-  password_gt?: String;
-  password_gte?: String;
-  password_contains?: String;
-  password_not_contains?: String;
-  password_starts_with?: String;
-  password_not_starts_with?: String;
-  password_ends_with?: String;
-  password_not_ends_with?: String;
+  cell?: String;
+  cell_not?: String;
+  cell_in?: String[] | String;
+  cell_not_in?: String[] | String;
+  cell_lt?: String;
+  cell_lte?: String;
+  cell_gt?: String;
+  cell_gte?: String;
+  cell_contains?: String;
+  cell_not_contains?: String;
+  cell_starts_with?: String;
+  cell_not_starts_with?: String;
+  cell_ends_with?: String;
+  cell_not_ends_with?: String;
   posts_every?: PostWhereInput;
   posts_some?: PostWhereInput;
   posts_none?: PostWhereInput;
@@ -946,6 +1027,62 @@ export interface UserWhereInput {
   role_not_starts_with?: String;
   role_ends_with?: String;
   role_not_ends_with?: String;
+  image?: String;
+  image_not?: String;
+  image_in?: String[] | String;
+  image_not_in?: String[] | String;
+  image_lt?: String;
+  image_lte?: String;
+  image_gt?: String;
+  image_gte?: String;
+  image_contains?: String;
+  image_not_contains?: String;
+  image_starts_with?: String;
+  image_not_starts_with?: String;
+  image_ends_with?: String;
+  image_not_ends_with?: String;
+  publicEmail?: String;
+  publicEmail_not?: String;
+  publicEmail_in?: String[] | String;
+  publicEmail_not_in?: String[] | String;
+  publicEmail_lt?: String;
+  publicEmail_lte?: String;
+  publicEmail_gt?: String;
+  publicEmail_gte?: String;
+  publicEmail_contains?: String;
+  publicEmail_not_contains?: String;
+  publicEmail_starts_with?: String;
+  publicEmail_not_starts_with?: String;
+  publicEmail_ends_with?: String;
+  publicEmail_not_ends_with?: String;
+  publicName?: String;
+  publicName_not?: String;
+  publicName_in?: String[] | String;
+  publicName_not_in?: String[] | String;
+  publicName_lt?: String;
+  publicName_lte?: String;
+  publicName_gt?: String;
+  publicName_gte?: String;
+  publicName_contains?: String;
+  publicName_not_contains?: String;
+  publicName_starts_with?: String;
+  publicName_not_starts_with?: String;
+  publicName_ends_with?: String;
+  publicName_not_ends_with?: String;
+  bio?: String;
+  bio_not?: String;
+  bio_in?: String[] | String;
+  bio_not_in?: String[] | String;
+  bio_lt?: String;
+  bio_lte?: String;
+  bio_gt?: String;
+  bio_gte?: String;
+  bio_contains?: String;
+  bio_not_contains?: String;
+  bio_starts_with?: String;
+  bio_not_starts_with?: String;
+  bio_ends_with?: String;
+  bio_not_ends_with?: String;
   AND?: UserWhereInput[] | UserWhereInput;
   OR?: UserWhereInput[] | UserWhereInput;
   NOT?: UserWhereInput[] | UserWhereInput;
@@ -1032,12 +1169,17 @@ export interface MarketUpdateManyMutationInput {
 }
 
 export interface UserCreateInput {
+  password: String;
   name: String;
   email: String;
-  password: String;
+  cell?: String;
   posts?: PostCreateManyWithoutAuthorInput;
   stall?: StallCreateOneWithoutOwnerInput;
   role?: String;
+  image?: String;
+  publicEmail?: String;
+  publicName?: String;
+  bio?: String;
 }
 
 export interface MarketUpdateWithWhereUniqueWithoutStallsInput {
@@ -1046,6 +1188,8 @@ export interface MarketUpdateWithWhereUniqueWithoutStallsInput {
 }
 
 export interface StallCreateInput {
+  image?: String;
+  w3w?: String;
   lng: String;
   lat: String;
   name?: String;
@@ -1099,11 +1243,16 @@ export interface ProvinceCreateInput {
 }
 
 export interface UserCreateWithoutPostsInput {
+  password: String;
   name: String;
   email: String;
-  password: String;
+  cell?: String;
   stall?: StallCreateOneWithoutOwnerInput;
   role?: String;
+  image?: String;
+  publicEmail?: String;
+  publicName?: String;
+  bio?: String;
 }
 
 export interface StallCreateManyWithoutMarketsInput {
@@ -1117,13 +1266,20 @@ export interface StallCreateOneWithoutOwnerInput {
 }
 
 export interface UserUpdateManyMutationInput {
+  password?: String;
   name?: String;
   email?: String;
-  password?: String;
+  cell?: String;
   role?: String;
+  image?: String;
+  publicEmail?: String;
+  publicName?: String;
+  bio?: String;
 }
 
 export interface StallCreateWithoutOwnerInput {
+  image?: String;
+  w3w?: String;
   lng: String;
   lat: String;
   name?: String;
@@ -1172,11 +1328,16 @@ export interface StallUpdateOneWithoutOwnerInput {
 }
 
 export interface UserUpdateWithoutPostsDataInput {
+  password?: String;
   name?: String;
   email?: String;
-  password?: String;
+  cell?: String;
   stall?: StallUpdateOneWithoutOwnerInput;
   role?: String;
+  image?: String;
+  publicEmail?: String;
+  publicName?: String;
+  bio?: String;
 }
 
 export interface UserUpdateOneRequiredWithoutPostsInput {
@@ -1234,36 +1395,51 @@ export interface NodeNode {
 
 export interface UserPreviousValues {
   id: ID_Output;
+  password: String;
   name: String;
   email: String;
-  password: String;
+  cell?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
   role?: String;
+  image?: String;
+  publicEmail?: String;
+  publicName?: String;
+  bio?: String;
 }
 
 export interface UserPreviousValuesPromise
   extends Promise<UserPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  password: () => Promise<String>;
   name: () => Promise<String>;
   email: () => Promise<String>;
-  password: () => Promise<String>;
+  cell: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   role: () => Promise<String>;
+  image: () => Promise<String>;
+  publicEmail: () => Promise<String>;
+  publicName: () => Promise<String>;
+  bio: () => Promise<String>;
 }
 
 export interface UserPreviousValuesSubscription
   extends Promise<AsyncIterator<UserPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  password: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
+  cell: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   role: () => Promise<AsyncIterator<String>>;
+  image: () => Promise<AsyncIterator<String>>;
+  publicEmail: () => Promise<AsyncIterator<String>>;
+  publicName: () => Promise<AsyncIterator<String>>;
+  bio: () => Promise<AsyncIterator<String>>;
 }
 
 export interface PostEdge {
@@ -1353,6 +1529,8 @@ export interface AggregateMarketSubscription
 
 export interface StallPreviousValues {
   id: ID_Output;
+  image?: String;
+  w3w?: String;
   lng: String;
   lat: String;
   name?: String;
@@ -1365,6 +1543,8 @@ export interface StallPreviousValuesPromise
   extends Promise<StallPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  image: () => Promise<String>;
+  w3w: () => Promise<String>;
   lng: () => Promise<String>;
   lat: () => Promise<String>;
   name: () => Promise<String>;
@@ -1377,6 +1557,8 @@ export interface StallPreviousValuesSubscription
   extends Promise<AsyncIterator<StallPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  image: () => Promise<AsyncIterator<String>>;
+  w3w: () => Promise<AsyncIterator<String>>;
   lng: () => Promise<AsyncIterator<String>>;
   lat: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
@@ -1576,6 +1758,8 @@ export interface AggregateProvinceSubscription
 
 export interface Stall {
   id: ID_Output;
+  image?: String;
+  w3w?: String;
   lng: String;
   lat: String;
   name?: String;
@@ -1586,6 +1770,8 @@ export interface Stall {
 
 export interface StallPromise extends Promise<Stall>, Fragmentable {
   id: () => Promise<ID_Output>;
+  image: () => Promise<String>;
+  w3w: () => Promise<String>;
   lng: () => Promise<String>;
   lat: () => Promise<String>;
   name: () => Promise<String>;
@@ -1610,6 +1796,8 @@ export interface StallSubscription
   extends Promise<AsyncIterator<Stall>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  image: () => Promise<AsyncIterator<String>>;
+  w3w: () => Promise<AsyncIterator<String>>;
   lng: () => Promise<AsyncIterator<String>>;
   lat: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
@@ -1832,19 +2020,25 @@ export interface ProvinceSubscriptionPayloadSubscription
 
 export interface User {
   id: ID_Output;
+  password: String;
   name: String;
   email: String;
-  password: String;
+  cell?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
   role?: String;
+  image?: String;
+  publicEmail?: String;
+  publicName?: String;
+  bio?: String;
 }
 
 export interface UserPromise extends Promise<User>, Fragmentable {
   id: () => Promise<ID_Output>;
+  password: () => Promise<String>;
   name: () => Promise<String>;
   email: () => Promise<String>;
-  password: () => Promise<String>;
+  cell: () => Promise<String>;
   posts: <T = FragmentableArray<Post>>(
     args?: {
       where?: PostWhereInput;
@@ -1860,15 +2054,20 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   updatedAt: () => Promise<DateTimeOutput>;
   stall: <T = Stall>() => T;
   role: () => Promise<String>;
+  image: () => Promise<String>;
+  publicEmail: () => Promise<String>;
+  publicName: () => Promise<String>;
+  bio: () => Promise<String>;
 }
 
 export interface UserSubscription
   extends Promise<AsyncIterator<User>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  password: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
+  cell: () => Promise<AsyncIterator<String>>;
   posts: <T = Promise<AsyncIterator<PostSubscription>>>(
     args?: {
       where?: PostWhereInput;
@@ -1884,6 +2083,10 @@ export interface UserSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   stall: <T = StallSubscription>() => T;
   role: () => Promise<AsyncIterator<String>>;
+  image: () => Promise<AsyncIterator<String>>;
+  publicEmail: () => Promise<AsyncIterator<String>>;
+  publicName: () => Promise<AsyncIterator<String>>;
+  bio: () => Promise<AsyncIterator<String>>;
 }
 
 export interface PostPreviousValues {

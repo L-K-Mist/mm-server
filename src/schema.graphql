@@ -7,6 +7,21 @@ type Query {
   post(id: ID!): Post
 }
 
+# addStallHolder(
+#                         image: String
+#                         publicEmail: String
+#                         publicName: String
+#                         cell: String
+#                         bio: String
+#                         stall_name: String!
+#                         stall_image: String
+#                         stall_lat: Float
+#                         stall_lng: Float
+#                         stall_w3w: String
+#                         stall_description: String
+#                         market_name: String
+#                 )
+
 type Mutation {
   createDraft(title: String!, content: String!, authorEmail: String!): Post!
   deletePost(id: ID!): Post
@@ -15,16 +30,31 @@ type Mutation {
   login(email: String!, password: String!): AuthPayload!
   authorize(email: String!, authId: String!, name: String!): AuthPayload!
   createStallHolder(
-    lng: String!
-    lat: String!
-    stall_name: String 
-    description: String
-    market: String
+    stall: StallofUserInput!
+    profile: UserProfileInput!
   ): Stall!
   createMarket(
     name: String!
     province: String
   ): Market!
+}
+
+input UserProfileInput{
+  cell: String
+  image: String
+  publicEmail: String
+  publicName: String
+  bio: String
+}
+
+input StallofUserInput {
+    lng: String!
+    lat: String!
+    w3w: String
+    image: String
+    name: String 
+    description: String
+    market: String
 }
 
 type AuthPayload {
@@ -43,17 +73,24 @@ type Post {
 }
 
 type User {
-  id: ID! 
+  id: ID!
   name: String!
-  email: String! 
+  email: String!
+  cell: String
   posts: [Post!]!
   createdAt: DateTime!
   updatedAt: DateTime!
   stall: Stall
   role: String
+  image: String
+  publicEmail: String
+  publicName: String
+  bio: String
 }
 
 type Stall {
+  image: String
+  w3w: String
   id: ID! 
   lng: String!
   lat: String!
