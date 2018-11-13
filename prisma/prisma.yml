@@ -1,7 +1,7 @@
 # TODO: update server with config and env
 
 #endpoint: http://localhost:4466
-endpoint: https://eu1.prisma.sh/dylan-van-den-bosch-905763/market-mothership/dev
+endpoint: ${env: PRISMA_ENDPOINT}
 datamodel: datamodel.prisma
 generate:
   - generator: javascript-client
