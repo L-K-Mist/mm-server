@@ -1,8 +1,9 @@
 # TODO: update server with config and env
 
 #endpoint: http://localhost:4466
-endpoint: ${env: PRISMA_ENDPOINT}
+endpoint: ${env:PRISMA_ENDPOINT}
 datamodel: datamodel.prisma
+secret: ${env:PRISMA_SECRET}
 generate:
   - generator: javascript-client
     output: ../src/generated/prisma-client/

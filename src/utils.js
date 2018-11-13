@@ -1,6 +1,8 @@
-const { verify } = require('jsonwebtoken')
+const {
+  verify
+} = require('jsonwebtoken')
 
-const APP_SECRET = 'appsecret321'
+const APP_SECRET = process.env.APP_SECRET
 
 class AuthError extends Error {
   constructor() {
