@@ -6,6 +6,7 @@ type Query {
   drafts: [Post!]!
   post(id: ID!): Post
   markets: [Market!]!
+
   myStall: Stall!
   myMarkets: [Market!]!
 }
@@ -21,13 +22,10 @@ type Mutation {
     stall: StallofUserInput!
     profile: UserProfileInput!
   ): Stall!
-  createMarket(
-    name: String!
-    province: String
-  ): Market!
+  createMarket(name: String!, province: String): Market!
 }
 
-input UserProfileInput{
+input UserProfileInput {
   cell: String
   image: String
   publicEmail: String
@@ -36,13 +34,13 @@ input UserProfileInput{
 }
 
 input StallofUserInput {
-    lng: String
-    lat: String
-    w3w: String
-    image: String
-    name: String 
-    description: String
-    market: String
+  lng: String
+  lat: String
+  w3w: String
+  image: String
+  name: String
+  description: String
+  market: String
 }
 
 type AuthPayload {
@@ -79,10 +77,10 @@ type User {
 type Stall {
   image: String
   w3w: String
-  id: ID! 
+  id: ID!
   lng: String
   lat: String
-  name: String 
+  name: String
   description: String
   owner: User!
   markets: [Market!]!
@@ -91,8 +89,8 @@ type Stall {
 }
 
 type Market {
-  id: ID! 
-  name: String! 
+  id: ID!
+  name: String!
   lat: Float
   lng: Float
   w3w: String
@@ -102,7 +100,7 @@ type Market {
 }
 
 type Province {
-  id: ID! 
+  id: ID!
   name: String!
   markets: [Market!]!
 }
