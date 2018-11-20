@@ -6,7 +6,7 @@ type Query {
   drafts: [Post!]!
   post(id: ID!): Post
   markets: [Market!]!
-
+  stalls: [Stall!]!
   myStall: Stall!
   myMarkets: [Market!]!
 }

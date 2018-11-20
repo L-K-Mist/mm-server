@@ -11,14 +11,19 @@ const {
   permissions
 } = require('./permissions')
 
+const {
+  prismaBinding
+} = require('./prisma-binding')
+
 const server = new GraphQLServer({
   typeDefs: 'src/schema.graphql',
   resolvers,
-  middlewares: [permissions],
+  // middlewares: [permissions],
   context: request => {
     return {
       ...request,
       db: prisma,
+      binding: prismaBinding
     }
   },
 })
