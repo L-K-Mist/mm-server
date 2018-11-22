@@ -61,6 +61,24 @@ const Mutation = {
     })
   },
 
+  createProduct: async (parent, input, ctx) => {
+    return ctx.db.createProduct({
+      data: {
+        name: input.name,
+        image: input.image,
+        description: input.description,
+        measurementUnit: input.measurementUnit,
+        unitsPerItem: input.unitsPerItem,
+        pricePerItem: input.pricePerItem,
+        stall: {
+          connect: {
+            id: input.stallId
+          }
+        }
+      }
+    })
+  },
+
   authorize: async (parent, {
     email,
     authId,
