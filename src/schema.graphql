@@ -84,8 +84,20 @@ type Stall {
   description: String
   owner: User!
   markets: [Market!]!
+  products: [Product!]!
   createdAt: DateTime!
   updatedAt: DateTime!
+}
+
+type Product {
+  id: ID!
+  name: String!
+  image: String!
+  description: String
+  measurementUnit: String
+  unitsPerItem: Float
+  pricePerItem: Float
+  stall: Stall!
 }
 
 type Market {

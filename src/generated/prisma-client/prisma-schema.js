@@ -7,6 +7,10 @@ type AggregatePost {
   count: Int!
 }
 
+type AggregateProduct {
+  count: Int!
+}
+
 type AggregateProvince {
   count: Int!
 }
@@ -309,6 +313,12 @@ type Mutation {
   upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
   deletePost(where: PostWhereUniqueInput!): Post
   deleteManyPosts(where: PostWhereInput): BatchPayload!
+  createProduct(data: ProductCreateInput!): Product!
+  updateProduct(data: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product
+  updateManyProducts(data: ProductUpdateManyMutationInput!, where: ProductWhereInput): BatchPayload!
+  upsertProduct(where: ProductWhereUniqueInput!, create: ProductCreateInput!, update: ProductUpdateInput!): Product!
+  deleteProduct(where: ProductWhereUniqueInput!): Product
+  deleteManyProducts(where: ProductWhereInput): BatchPayload!
   createProvince(data: ProvinceCreateInput!): Province!
   updateProvince(data: ProvinceUpdateInput!, where: ProvinceWhereUniqueInput!): Province
   updateManyProvinces(data: ProvinceUpdateManyMutationInput!, where: ProvinceWhereInput): BatchPayload!
@@ -537,6 +547,246 @@ input PostWhereUniqueInput {
   id: ID
 }
 
+type Product {
+  id: ID!
+  name: String!
+  image: String!
+  description: String
+  measurementUnit: String
+  unitsPerItem: Float
+  pricePerItem: Float
+  stall: Stall!
+}
+
+type ProductConnection {
+  pageInfo: PageInfo!
+  edges: [ProductEdge]!
+  aggregate: AggregateProduct!
+}
+
+input ProductCreateInput {
+  name: String!
+  image: String!
+  description: String
+  measurementUnit: String
+  unitsPerItem: Float
+  pricePerItem: Float
+  stall: StallCreateOneWithoutProductsInput!
+}
+
+input ProductCreateManyWithoutStallInput {
+  create: [ProductCreateWithoutStallInput!]
+  connect: [ProductWhereUniqueInput!]
+}
+
+input ProductCreateWithoutStallInput {
+  name: String!
+  image: String!
+  description: String
+  measurementUnit: String
+  unitsPerItem: Float
+  pricePerItem: Float
+}
+
+type ProductEdge {
+  node: Product!
+  cursor: String!
+}
+
+enum ProductOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  image_ASC
+  image_DESC
+  description_ASC
+  description_DESC
+  measurementUnit_ASC
+  measurementUnit_DESC
+  unitsPerItem_ASC
+  unitsPerItem_DESC
+  pricePerItem_ASC
+  pricePerItem_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ProductPreviousValues {
+  id: ID!
+  name: String!
+  image: String!
+  description: String
+  measurementUnit: String
+  unitsPerItem: Float
+  pricePerItem: Float
+}
+
+type ProductSubscriptionPayload {
+  mutation: MutationType!
+  node: Product
+  updatedFields: [String!]
+  previousValues: ProductPreviousValues
+}
+
+input ProductSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ProductWhereInput
+  AND: [ProductSubscriptionWhereInput!]
+  OR: [ProductSubscriptionWhereInput!]
+  NOT: [ProductSubscriptionWhereInput!]
+}
+
+input ProductUpdateInput {
+  name: String
+  image: String
+  description: String
+  measurementUnit: String
+  unitsPerItem: Float
+  pricePerItem: Float
+  stall: StallUpdateOneRequiredWithoutProductsInput
+}
+
+input ProductUpdateManyMutationInput {
+  name: String
+  image: String
+  description: String
+  measurementUnit: String
+  unitsPerItem: Float
+  pricePerItem: Float
+}
+
+input ProductUpdateManyWithoutStallInput {
+  create: [ProductCreateWithoutStallInput!]
+  delete: [ProductWhereUniqueInput!]
+  connect: [ProductWhereUniqueInput!]
+  disconnect: [ProductWhereUniqueInput!]
+  update: [ProductUpdateWithWhereUniqueWithoutStallInput!]
+  upsert: [ProductUpsertWithWhereUniqueWithoutStallInput!]
+}
+
+input ProductUpdateWithoutStallDataInput {
+  name: String
+  image: String
+  description: String
+  measurementUnit: String
+  unitsPerItem: Float
+  pricePerItem: Float
+}
+
+input ProductUpdateWithWhereUniqueWithoutStallInput {
+  where: ProductWhereUniqueInput!
+  data: ProductUpdateWithoutStallDataInput!
+}
+
+input ProductUpsertWithWhereUniqueWithoutStallInput {
+  where: ProductWhereUniqueInput!
+  update: ProductUpdateWithoutStallDataInput!
+  create: ProductCreateWithoutStallInput!
+}
+
+input ProductWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  image: String
+  image_not: String
+  image_in: [String!]
+  image_not_in: [String!]
+  image_lt: String
+  image_lte: String
+  image_gt: String
+  image_gte: String
+  image_contains: String
+  image_not_contains: String
+  image_starts_with: String
+  image_not_starts_with: String
+  image_ends_with: String
+  image_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  measurementUnit: String
+  measurementUnit_not: String
+  measurementUnit_in: [String!]
+  measurementUnit_not_in: [String!]
+  measurementUnit_lt: String
+  measurementUnit_lte: String
+  measurementUnit_gt: String
+  measurementUnit_gte: String
+  measurementUnit_contains: String
+  measurementUnit_not_contains: String
+  measurementUnit_starts_with: String
+  measurementUnit_not_starts_with: String
+  measurementUnit_ends_with: String
+  measurementUnit_not_ends_with: String
+  unitsPerItem: Float
+  unitsPerItem_not: Float
+  unitsPerItem_in: [Float!]
+  unitsPerItem_not_in: [Float!]
+  unitsPerItem_lt: Float
+  unitsPerItem_lte: Float
+  unitsPerItem_gt: Float
+  unitsPerItem_gte: Float
+  pricePerItem: Float
+  pricePerItem_not: Float
+  pricePerItem_in: [Float!]
+  pricePerItem_not_in: [Float!]
+  pricePerItem_lt: Float
+  pricePerItem_lte: Float
+  pricePerItem_gt: Float
+  pricePerItem_gte: Float
+  stall: StallWhereInput
+  AND: [ProductWhereInput!]
+  OR: [ProductWhereInput!]
+  NOT: [ProductWhereInput!]
+}
+
+input ProductWhereUniqueInput {
+  id: ID
+}
+
 type Province {
   id: ID!
   name: String!
@@ -678,6 +928,9 @@ type Query {
   post(where: PostWhereUniqueInput!): Post
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
   postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
+  product(where: ProductWhereUniqueInput!): Product
+  products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product]!
+  productsConnection(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductConnection!
   province(where: ProvinceWhereUniqueInput!): Province
   provinces(where: ProvinceWhereInput, orderBy: ProvinceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Province]!
   provincesConnection(where: ProvinceWhereInput, orderBy: ProvinceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProvinceConnection!
@@ -700,6 +953,7 @@ type Stall {
   description: String
   owner: User!
   markets(where: MarketWhereInput, orderBy: MarketOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Market!]
+  products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product!]
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -719,6 +973,7 @@ input StallCreateInput {
   description: String
   owner: UserCreateOneWithoutStallInput!
   markets: MarketCreateManyWithoutStallsInput
+  products: ProductCreateManyWithoutStallInput
 }
 
 input StallCreateManyWithoutMarketsInput {
@@ -731,6 +986,11 @@ input StallCreateOneWithoutOwnerInput {
   connect: StallWhereUniqueInput
 }
 
+input StallCreateOneWithoutProductsInput {
+  create: StallCreateWithoutProductsInput
+  connect: StallWhereUniqueInput
+}
+
 input StallCreateWithoutMarketsInput {
   image: String
   w3w: String
@@ -739,6 +999,7 @@ input StallCreateWithoutMarketsInput {
   name: String
   description: String
   owner: UserCreateOneWithoutStallInput!
+  products: ProductCreateManyWithoutStallInput
 }
 
 input StallCreateWithoutOwnerInput {
@@ -748,6 +1009,18 @@ input StallCreateWithoutOwnerInput {
   lat: String
   name: String
   description: String
+  markets: MarketCreateManyWithoutStallsInput
+  products: ProductCreateManyWithoutStallInput
+}
+
+input StallCreateWithoutProductsInput {
+  image: String
+  w3w: String
+  lng: String
+  lat: String
+  name: String
+  description: String
+  owner: UserCreateOneWithoutStallInput!
   markets: MarketCreateManyWithoutStallsInput
 }
 
@@ -816,6 +1089,7 @@ input StallUpdateInput {
   description: String
   owner: UserUpdateOneRequiredWithoutStallInput
   markets: MarketUpdateManyWithoutStallsInput
+  products: ProductUpdateManyWithoutStallInput
 }
 
 input StallUpdateManyMutationInput {
@@ -836,6 +1110,13 @@ input StallUpdateManyWithoutMarketsInput {
   upsert: [StallUpsertWithWhereUniqueWithoutMarketsInput!]
 }
 
+input StallUpdateOneRequiredWithoutProductsInput {
+  create: StallCreateWithoutProductsInput
+  update: StallUpdateWithoutProductsDataInput
+  upsert: StallUpsertWithoutProductsInput
+  connect: StallWhereUniqueInput
+}
+
 input StallUpdateOneWithoutOwnerInput {
   create: StallCreateWithoutOwnerInput
   update: StallUpdateWithoutOwnerDataInput
@@ -853,6 +1134,7 @@ input StallUpdateWithoutMarketsDataInput {
   name: String
   description: String
   owner: UserUpdateOneRequiredWithoutStallInput
+  products: ProductUpdateManyWithoutStallInput
 }
 
 input StallUpdateWithoutOwnerDataInput {
@@ -862,6 +1144,18 @@ input StallUpdateWithoutOwnerDataInput {
   lat: String
   name: String
   description: String
+  markets: MarketUpdateManyWithoutStallsInput
+  products: ProductUpdateManyWithoutStallInput
+}
+
+input StallUpdateWithoutProductsDataInput {
+  image: String
+  w3w: String
+  lng: String
+  lat: String
+  name: String
+  description: String
+  owner: UserUpdateOneRequiredWithoutStallInput
   markets: MarketUpdateManyWithoutStallsInput
 }
 
@@ -873,6 +1167,11 @@ input StallUpdateWithWhereUniqueWithoutMarketsInput {
 input StallUpsertWithoutOwnerInput {
   update: StallUpdateWithoutOwnerDataInput!
   create: StallCreateWithoutOwnerInput!
+}
+
+input StallUpsertWithoutProductsInput {
+  update: StallUpdateWithoutProductsDataInput!
+  create: StallCreateWithoutProductsInput!
 }
 
 input StallUpsertWithWhereUniqueWithoutMarketsInput {
@@ -984,6 +1283,9 @@ input StallWhereInput {
   markets_every: MarketWhereInput
   markets_some: MarketWhereInput
   markets_none: MarketWhereInput
+  products_every: ProductWhereInput
+  products_some: ProductWhereInput
+  products_none: ProductWhereInput
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -1013,6 +1315,7 @@ input StallWhereUniqueInput {
 type Subscription {
   market(where: MarketSubscriptionWhereInput): MarketSubscriptionPayload
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
+  product(where: ProductSubscriptionWhereInput): ProductSubscriptionPayload
   province(where: ProvinceSubscriptionWhereInput): ProvinceSubscriptionPayload
   stall(where: StallSubscriptionWhereInput): StallSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
