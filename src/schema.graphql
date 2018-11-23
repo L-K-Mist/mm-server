@@ -26,35 +26,6 @@ type Mutation {
   createProduct(input: CreateProductInput!): Product!
 }
 
-input UserProfileInput {
-  cell: String
-  image: String
-  publicEmail: String
-  publicName: String
-  bio: String
-}
-
-input StallofUserInput {
-  lng: String
-  lat: String
-  w3w: String
-  image: String
-  name: String
-  description: String
-  market: String
-}
-
-input CreateProductInput {
-  stallId: ID!
-  name: String!
-  image: String!
-  description: String
-  measurementUnit: String
-  unitsPerItem: Float
-  pricePerItem: Float
-  stall: Stall!
-}
-
 type AuthPayload {
   token: String!
   user: User!
@@ -127,4 +98,33 @@ type Province {
   id: ID!
   name: String!
   markets: [Market!]!
+}
+
+input UserProfileInput {
+  cell: String
+  image: String
+  publicEmail: String
+  publicName: String
+  bio: String
+}
+
+input StallofUserInput {
+  lng: String
+  lat: String
+  w3w: String
+  image: String
+  name: String
+  description: String
+  market: String
+}
+
+input CreateProductInput {
+  stallId: ID!
+  name: String!
+  image: String
+  description: String
+  measurementUnit: String
+  unitsPerItem: Float
+  pricePerItem: Float
+  stall: String!
 }
