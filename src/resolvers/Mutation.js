@@ -61,7 +61,6 @@ const Mutation = {
     })
   },
 
-  // TODO: solve issue of routing from StallDatail to MyStall
 
   createProduct: async (parent, {
     input
