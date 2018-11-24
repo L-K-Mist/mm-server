@@ -9,6 +9,7 @@ type Query {
   stalls: [Stall!]!
   myStall: Stall!
   myMarkets: [Market!]!
+  stallProducts(stallId: String!): [Product!]!
 }
 
 type Mutation {
@@ -126,5 +127,4 @@ input CreateProductInput {
   measurementUnit: String
   unitsPerItem: Float
   pricePerItem: Float
-  stall: String!
 }
