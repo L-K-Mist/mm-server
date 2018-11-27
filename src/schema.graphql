@@ -25,6 +25,7 @@ type Mutation {
   ): Stall!
   createMarket(name: String!, province: String): Market!
   createProduct(input: CreateProductInput!): Product!
+  updateProduct(input: UpdateProductInput!): Product!
 }
 
 type AuthPayload {
@@ -121,6 +122,16 @@ input StallofUserInput {
 
 input CreateProductInput {
   stallId: ID!
+  name: String!
+  image: String
+  description: String
+  measurementUnit: String
+  unitsPerItem: Float
+  pricePerItem: Float
+}
+
+input UpdateProductInput {
+  productId: ID!
   name: String!
   image: String
   description: String

@@ -80,6 +80,25 @@ const Mutation = {
     })
   },
 
+  updateProduct: async (parent, {
+    input
+  }, ctx) => {
+    return ctx.db.updateProduct({
+      where: {
+        id: input.productId
+      },
+      data: {
+        name: input.name,
+        image: input.image,
+        description: input.description,
+        measurementUnit: input.measurementUnit,
+        unitsPerItem: input.unitsPerItem,
+        pricePerItem: input.pricePerItem,
+
+      }
+    })
+  },
+
   authorize: async (parent, {
     email,
     authId,
