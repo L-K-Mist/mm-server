@@ -103,7 +103,7 @@ const Mutation = {
   }, ctx) => {
     return ctx.db.updateStall({
       where: {
-        id: stallId
+        id: input.stallId
       },
       data: {
         lng: input.lng,
