@@ -80,6 +80,44 @@ const Mutation = {
     })
   },
 
+  updateStallHolder: async (parent, {
+    input
+  }, ctx) => {
+    return ctx.db.updateUser({
+      where: {
+        id: input.id
+      },
+      data: {
+        image: input.image,
+        publicEmail: input.publicEmail,
+        publicName: input.publicName,
+        cell: input.cell,
+        bio: input.bio,
+
+      }
+    })
+  },
+
+  updateStall: async (parent, {
+    input
+  }, ctx) => {
+    return ctx.db.updateStall({
+      where: {
+        id: stallId
+      },
+      data: {
+        lng: input.lng,
+        lat: input.lat,
+        w3w: input.w3w,
+        image: input.image,
+        name: input.name,
+        description: input.description,
+        market: input.market,
+
+      }
+    })
+  },
+
   updateProduct: async (parent, {
     input
   }, ctx) => {

@@ -23,6 +23,8 @@ type Mutation {
     stall: StallofUserInput!
     profile: UserProfileInput!
   ): Stall!
+  updateStallHolder(input: UserProfileInput!): User!
+  updateStall(input: StallofUserInput!): Stall!
   createMarket(name: String!, province: String): Market!
   createProduct(input: CreateProductInput!): Product!
   updateProduct(input: UpdateProductInput!): Product!
@@ -103,6 +105,7 @@ type Province {
 }
 
 input UserProfileInput {
+  id: String
   cell: String
   image: String
   publicEmail: String
@@ -111,6 +114,7 @@ input UserProfileInput {
 }
 
 input StallofUserInput {
+  stallId: String
   lng: String
   lat: String
   w3w: String
