@@ -33,6 +33,14 @@ const Query = {
     }, info)
   },
 
+  stall: (parent, args, ctx, info) => {
+    return ctx.binding.query.stall({
+      where: {
+        id: args.stallId
+      }
+    }, info)
+  },
+
 
   myMarkets: (parent, args, ctx) => {
     return ctx.db.user({
