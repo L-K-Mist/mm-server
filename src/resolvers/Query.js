@@ -1,17 +1,20 @@
-const { getUserId } = require("../utils");
+const {
+  getUserId
+} = require("../utils");
 // const {
 //   prisma
 // } = require('../generated/prisma-client')
 
 const Query = {
-  me: (parent, args, ctx) => {
-    return ctx.db.user({
-      id: getUserId(ctx)
-    });
+  me: (parent, args, ctx, info) => {
+    return ctx.binding.query.user({
+      where: {
+        id: getUserId(ctx)
+      }
+    }, info);
   },
   myStall: (parent, args, ctx, info) => {
-    return ctx.binding.query.stalls(
-      {
+    return ctx.binding.query.stalls({
         where: {
           owner: {
             id: getUserId(ctx)
@@ -21,7 +24,9 @@ const Query = {
       info
     );
   },
-  stallProducts: (parent, { stallId }, ctx) => {
+  stallProducts: (parent, {
+    stallId
+  }, ctx) => {
     return ctx.db.products({
       where: {
         stall: {
@@ -31,8 +36,7 @@ const Query = {
     });
   },
   stalls: (parent, args, ctx, info) => {
-    return ctx.binding.query.stalls(
-      {
+    return ctx.binding.query.stalls({
         first: 20
       },
       info
@@ -40,8 +44,7 @@ const Query = {
   },
 
   stall: (parent, args, ctx, info) => {
-    return ctx.binding.query.stall(
-      {
+    return ctx.binding.query.stall({
         where: {
           id: args.stallId
         }
@@ -70,7 +73,9 @@ const Query = {
         isPublished: false
       }
     }),
-  post: (parent, { id }, ctx) =>
+  post: (parent, {
+      id
+    }, ctx) =>
     ctx.db.post({
       id
     }),
